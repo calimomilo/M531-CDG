@@ -1,0 +1,12 @@
+Dans l'idée :
+
+1) Faires ses modifications sur sa branche perso + commit
+
+2) Une fois que l'on veut envoyer nos modifs sur le main :
+    2.1) Changer de branche : git checkout main
+    2.2) Pull les dernières modifications du main : git pull 
+    2.3) Envoyer les modifications de sa branche sur le main : git merge dylan (depuis la branche main)
+
+3) Pour récupérer les modifications de main sur sa branche 
+    3.1) git checkout dylan : changer de branche
+    3.2) git merge main : save les modifications sur notre branche perso
