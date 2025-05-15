@@ -13,6 +13,9 @@ First you need to get a copy of this repository, the best approach is to fork th
     - Collaborators and team
     - (Manage access) > Add people
 
+vas-y je fais des changements
+
+
 ### 2. Setup your local workspace
 
 Now, each team member can configure his/her local workspace.
