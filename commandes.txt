@@ -1,6 +1,6 @@
 Dans l'idée :
 
-1) Faires ses modifications sur sa branche perso + commit
+1) Faires ses modifications sur sa branche perso + commit + push sur le main
 
 2) Une fois que l'on veut envoyer nos modifs sur le main :
     2.1) Changer de branche : git checkout main
