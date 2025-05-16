@@ -24,3 +24,5 @@ public class Main {
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
     }
 }
+// TODO : créer les classes, pour l'instant Map, Location, Player, et tout ce qu'il faut pour Move en priorité
+// TODO : voir aussi pour l'organisation des fichiers (créer des packages, dossiers?)
