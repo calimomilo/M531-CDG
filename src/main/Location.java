@@ -45,7 +45,7 @@ public class Location {
     }
 
     /**
-     * Définir les items dans la zone, utilisé uniquement pendant la création de la zone
+     * Définit les items dans la zone ; utilisé uniquement pendant la création de la zone
      * @param items : ArrayList des items à mettre dans la zone
      */
     public void setItems(ArrayList<Item> items) {
@@ -53,7 +53,7 @@ public class Location {
     }
 
     /**
-     * Enlever un item spécifique de la liste
+     * Enlève un item spécifique de la liste
      * @param item : item à enlever
      */
     public void removeItem(Item item) {
@@ -69,7 +69,7 @@ public class Location {
     }
 
     /**
-     * Définir l'état de la zone, utilisé une fois pour débloquer une zone fermée
+     * Définit l'état de la zone ; utilisé une fois pour débloquer une zone fermée
      * @param isLocked
      */
     public void setIsLocked(boolean isLocked) {
