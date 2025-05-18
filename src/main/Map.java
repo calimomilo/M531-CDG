@@ -23,6 +23,23 @@ public class Map {
      */
     public void addLocation(Location location, int x, int y) {
         // TODO : implémenter fonction
+        if (containsLocation(location)) {
+            System.out.println("Error: Location already added");
+        } else if (getLocation(x, y) != null) {
+            System.out.println("Error: Location already at these coordinates");;
+        } else {
+            if (x >= allLocations.size()) {
+                for (int i = 0; i <= x-allLocations.size(); i++) {
+                    allLocations.add(new ArrayList<>());
+                }
+            }
+            if (y >= allLocations.get(x).size()) {
+                for (int i = 0; i <= y-allLocations.size(); i++) {
+                    allLocations.add(null);
+                }
+            }
+            allLocations.get(x).add(y, location);
+        }
     }
 
     /**
