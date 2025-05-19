@@ -42,7 +42,7 @@ public class Array2Dprinter {
 
         for (int row = 0; row < array2D.length; row++) {
             appendHorizontalLine(output, maxLength, numColumns); // Print the top horizontal line for each element.
-            appendElements(output, array2D[row], maxLength, row == highlightRow, highlightColumn); // Print the elements in the row.
+            appendElements(output, array2D[row], maxLength, row == array2D.length-1-highlightRow, highlightColumn); // Print the elements in the row.
         }
         appendHorizontalLine(output, maxLength, numColumns); // Print the last horizontal line of the array.
         return output.toString();

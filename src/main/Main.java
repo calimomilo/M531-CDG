@@ -4,6 +4,7 @@ package main;
 import examples.ConsoleStylingExample;
 import examples.StringManipulation;
 import examples.UserInputExample;
+import utils.Array2Dprinter;
 import utils.Color;
 import utils.StringStyling;
 import utils.Style;
@@ -27,13 +28,15 @@ public class Main {
 
         /* ZONE POUR LES TESTS */
         Map map = new Map();
-        Location l1 = new Location("kitcehn", "oewifji", false);
-        Location l2 = new Location("kitcehn", "oewifji", true);
+        Location l1 = new Location("kitchen", "oewifji", false);
+        Location l2 = new Location("Living Room", "oewifji", false);
 
         map.addLocation(l1, 2, 2);
         map.addLocation(l2, 2, 3);
         System.out.println(Arrays.toString(map.getLocationCoords(l2, map.getAllLocations())));
         System.out.println(map.getAllLocations().get(2).size());
+
+        System.out.println(Array2Dprinter.print2DArray(map.printableAllLocations(),2,2));
 
         /* FIN DE LA ZONE POUR LES TESTS */
     }

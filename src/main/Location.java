@@ -1,8 +1,9 @@
 package main;
 
 import java.util.ArrayList;
+import utils.IPrintable;
 
-public class Location {
+public class Location implements IPrintable{
     private String name;
     private String description;
     private ArrayList<Item> items = new ArrayList<>();
@@ -64,7 +65,7 @@ public class Location {
      *
      * @return l'état de cette zone
      */
-    public boolean isLocked() {
+    public boolean getIsLocked() {
         return isLocked;
     }
 
@@ -74,5 +75,23 @@ public class Location {
      */
     public void setIsLocked(boolean isLocked) {
         this.isLocked = isLocked;
+    }
+
+    /**
+     *
+     * @return le texte à afficher sur la carte : pour l'instant juste le nom
+     */
+    @Override
+    public String getPrintableString() {
+        return name;
+    }
+
+    /**
+     *
+     * @return true si la zone est fermée et false si la zone est ouverte (pour griser les zones fermées)
+     */
+    @Override
+    public boolean isGrayedOut() {
+        return isLocked;
     }
 }

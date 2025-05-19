@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import utils.IPrintable;
 
 public class Map {
     private ArrayList<ArrayList<Location>> allLocations = new ArrayList<>();
@@ -131,5 +132,31 @@ public class Map {
      */
     public void setPlayerLocation(Location playerLocation) {
         this.playerLocation = playerLocation;
+    }
+
+    private IPrintable[][] toPrintableArray(ArrayList<ArrayList<Location>> arrayList) {
+        int cols = arrayList.size();
+        int maxRows = 0;
+        for (ArrayList<Location> column : arrayList) {
+            maxRows = Math.max(maxRows, column.size());
+        }
+        IPrintable[][] array = new IPrintable[maxRows][cols];
+        for (int i = 0; i < maxRows; i++) {
+            for (int j = 0; j < cols; j++) {
+                int columnSize = arrayList.get(j).size();
+                if (i < columnSize) {
+                    array[i][j] = arrayList.get(j).get(columnSize - i - 1);
+                }
+            }
+        }
+        return array;
+    }
+
+    public IPrintable[][] printableAllLocations() {
+        return toPrintableArray(allLocations);
+    }
+
+    public IPrintable[][] printableDiscoveredLocations() {
+        return toPrintableArray(discoveredLocations);
     }
 }
