@@ -32,7 +32,7 @@ public class Main {
 
         map.addLocation(l1, 2, 2);
         map.addLocation(l2, 2, 3);
-        System.out.println(Arrays.toString(map.getLocationCoords(l2)));
+        System.out.println(Arrays.toString(map.getLocationCoords(l2, map.getAllLocations())));
         System.out.println(map.getAllLocations().get(2).size());
 
         /* FIN DE LA ZONE POUR LES TESTS */
