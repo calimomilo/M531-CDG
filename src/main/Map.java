@@ -16,7 +16,7 @@ public class Map {
     }
 
     /**
-     * Ajoute une zone à la carte
+     * Ajoute une zone à la carte aux coordonnées indiquées
      * @param location zone à ajouter
      * @param x première coordonnée
      * @param y deuxième coordonnée
@@ -24,21 +24,24 @@ public class Map {
     public void addLocation(Location location, int x, int y) {
         // TODO : implémenter fonction
         if (containsLocation(location)) {
-            System.out.println("Error: Location already added");
+            System.out.println("Error: Location already added"); // message d'erreur si la zone est déjà dans la carte
         } else if (getLocation(x, y) != null) {
-            System.out.println("Error: Location already at these coordinates");;
+            System.out.println("Error: Location already at these coordinates"); // message d'erreur s'il y a déjà une zone aux coordonnées indiquées
         } else {
-            if (x >= allLocations.size()) {
-                for (int i = 0; i <= x-allLocations.size(); i++) {
+            if (x >= allLocations.size()) { // si la coordonnée x est en dehors du tableau existant, rajoute le bon nombre de colonnes
+                int add = x-allLocations.size();
+                for (int i = 0; i <= add; i++) {
                     allLocations.add(new ArrayList<>());
                 }
             }
-            if (y >= allLocations.get(x).size()) {
-                for (int i = 0; i <= y-allLocations.size(); i++) {
-                    allLocations.add(null);
+            if (y >= allLocations.get(x).size()) { // si la coordonnée y est en dehors de la colonne existante, rajoute le bon nombre d'éléments null
+                int add = y-allLocations.get(x).size();
+                for (int i = 0; i <= add; i++) {
+                    allLocations.get(x).add(null);
                 }
             }
-            allLocations.get(x).add(y, location);
+            allLocations.get(x).add(y, location); // rajoute la zone aux coordonnées
+            allLocations.get(x).remove(y+1); // fonction add pousse l'élément null qui était en y vers y+1, du coup, il faut l'enlever
         }
     }
 
