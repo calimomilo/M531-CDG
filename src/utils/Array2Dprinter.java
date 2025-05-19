@@ -1,5 +1,10 @@
 package utils;
 
+import main.Location;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Utility class to print a 2D array in a grid formatted way.
  */
@@ -28,6 +33,29 @@ public class Array2Dprinter {
     }
 
     /**
+     * Convert a 2D array List of IPrintable objects to a 2D array.
+     * @param arrayList2D The 2D list to be converted.
+     * @return The converted 2D array
+     */
+    public static IPrintable[][] convert2DArray(ArrayList<ArrayList<Location>> arrayList2D) { // for some reason wouldn't accept ArrayList and Location so had to switch types
+        int cols = arrayList2D.size();
+        int maxRows = 0;
+        for (ArrayList<Location> column : arrayList2D) {
+            maxRows = Math.max(maxRows, column.size());
+        }
+        IPrintable[][] array2D = new IPrintable[maxRows][cols];
+        for (int i = 0; i < maxRows; i++) {
+            for (int j = 0; j < cols; j++) {
+                int columnSize = arrayList2D.get(j).size();
+                if (i >= maxRows-columnSize) {
+                    array2D[i][j] = arrayList2D.get(j).get(maxRows-i-1);
+                }
+            }
+        }
+        return array2D;
+    }
+
+    /**
      * Build a grid string representation of a 2D array.
      *
      * @param array2D The 2D array to be printed. first dimension is the row (vertical), second dimension is the column (horizontal).
@@ -42,7 +70,7 @@ public class Array2Dprinter {
 
         for (int row = 0; row < array2D.length; row++) {
             appendHorizontalLine(output, maxLength, numColumns); // Print the top horizontal line for each element.
-            appendElements(output, array2D[row], maxLength, row == array2D.length-1-highlightRow, highlightColumn); // Print the elements in the row.
+            appendElements(output, array2D[row], maxLength, row == array2D.length-highlightColumn-1, highlightRow); // Print the elements in the row.
         }
         appendHorizontalLine(output, maxLength, numColumns); // Print the last horizontal line of the array.
         return output.toString();
