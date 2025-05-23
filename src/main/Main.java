@@ -27,31 +27,31 @@ public class Main {
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
 
         /* ZONE POUR LES TESTS */
-        Map map = new Map();
-        Location l1 = new Location("kitchen", "oewifji", false);
-        Location l2 = new Location("Living Room", "oewifji", false);
-        Location l3 = new Location("Bedroom", "oewifji", false);
-        Location l4 = new Location("Entrance Hall", "oewifji", false);
-        Location l5 = new Location("Bathroom", "oewifji", false);
-        Location l6 = new Location("Hallway", "oewifji", false);
-        Location l7 = new Location("Hallway", "oewifji", false);
-
-        map.addLocation(l1, 2, 3);
-        map.addLocation(l2, 2, 2);
-        map.addLocation(l3, 0, 1);
-        map.addLocation(l4, 1, 0);
-        map.addLocation(l5, 2, 0);
-        map.addLocation(l6, 1, 1);
-        map.addLocation(l7, 1, 2);
-        System.out.println(Arrays.toString(map.getLocationCoords(l2, map.getAllLocations())));
-        System.out.println(map.getAllLocations().get(0).size());
-        System.out.println(map.getAllLocations().get(1).size());
-        System.out.println(map.getAllLocations().get(2).size());
-
-        System.out.println(map.getLocationCoords(l5, map.getAllLocations())[0]);
-        System.out.println(map.getLocationCoords(l5, map.getAllLocations())[1]);
-
-        System.out.println(Array2Dprinter.print2DArray(Array2Dprinter.convert2DArray(map.getAllLocations()), map.getLocationCoords(l5, map.getAllLocations())[0], map.getLocationCoords(l5, map.getAllLocations())[1]));
+//        Map map = new Map();
+//        Location l1 = new Location("Kitchen", "There is a table in the middle of the room, and a sink and fridge against the north wall.", false);
+//        Location l2 = new Location("Living Room", "There are two beanbags around a carpet in the center of the room. A door leads west and the kitchen can be seen to the north.", false);
+//        Location l3 = new Location("Bedroom", "There is a bed in a corner and a closet near the door to the east.", false);
+//        Location l4 = new Location("Entrance Hall", "A hallway stretches to the north.", false);
+//        Location l5 = new Location("Bathroom", "There is a shower, a toilet, and a sink with a dirty mirror above it. Doors lead to the south and east.", false);
+//        Location l6 = new Location("South Hallway", "The hallway stretches to the north, with a door to the west.", false);
+//        Location l7 = new Location("North Hallway", "The hallway stretches south, with doors to the east and west.", false);
+//
+//        map.addLocation(l1, 2, 3);
+//        map.addLocation(l2, 2, 2);
+//        map.addLocation(l3, 0, 1);
+//        map.addLocation(l4, 1, 0);
+//        map.addLocation(l5, 0, 2);
+//        map.addLocation(l6, 1, 1);
+//        map.addLocation(l7, 1, 2);
+//        System.out.println(Arrays.toString(map.getLocationCoords(l2, map.getAllLocations())));
+//        System.out.println(map.getAllLocations().get(0).size());
+//        System.out.println(map.getAllLocations().get(1).size());
+//        System.out.println(map.getAllLocations().get(2).size());
+//
+//        System.out.println(map.getLocationCoords(l5, map.getAllLocations())[0]);
+//        System.out.println(map.getLocationCoords(l5, map.getAllLocations())[1]);
+//
+//        System.out.println(Array2Dprinter.print2DArray(Array2Dprinter.convert2DArray(map.getAllLocations()), map.getLocationCoords(l5, map.getAllLocations())[0], map.getLocationCoords(l5, map.getAllLocations())[1]));
 
         /* FIN DE LA ZONE POUR LES TESTS */
     }
