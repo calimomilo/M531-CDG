@@ -2,6 +2,7 @@ package main;
 
 import main.commandsRelated.CommandRegistry;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Game {
