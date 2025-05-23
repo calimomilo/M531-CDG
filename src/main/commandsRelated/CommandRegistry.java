@@ -25,14 +25,18 @@ public class CommandRegistry {
     }
 
     /**
-     * This function take the user input, parse it and call the command accordingly
-     * @param userInput
+     *This function take the user input, parse it and call the command accordingly
+     * @param userInput input
      */
     public void parseCommandInput(String userInput){
         userInput = userInput.toLowerCase().trim().replaceAll("\\s+"," ");
         String[] parts = userInput.split(" ");
         String verb = parts[0];
-        parts = Arrays.copyOfRange(parts, 1, (parts.length - 1));
+        if (parts.length > 1) {
+            parts = Arrays.copyOfRange(parts, 1, (parts.length - 1));
+        } else {
+            parts[0] = "";
+        }
 
         if (this.commands.containsKey(verb)) {
             this.commands.get(verb).execute(parts);
