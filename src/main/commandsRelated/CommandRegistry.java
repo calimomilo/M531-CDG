@@ -36,6 +36,9 @@ public class CommandRegistry {
 
         if (this.commands.containsKey(verb)) {
             this.commands.get(verb).execute(parts);
+        } else {
+            //TODO check this
+            //sout a message with an error here?
         }
 
     };

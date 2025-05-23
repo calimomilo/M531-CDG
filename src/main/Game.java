@@ -1,8 +1,6 @@
 package main;
 
-import main.commandsRelated.Command;
-import main.commandsRelated.CommandRegistry;
-import main.commandsRelated.Move;
+import main.commandsRelated.*;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -23,6 +21,8 @@ public class Game {
 
         CommandRegistry cr = new CommandRegistry();
         Command move = new Move("Move", "Allow the player to move on the map");
+        Command map = new Map("Map", "Display the map in the terminal");
+        Command look = new Look("Look", "Show all items in your current location");
         cr.addCommand(move);
         
         worldMap.addLocation(l1, 2, 3);

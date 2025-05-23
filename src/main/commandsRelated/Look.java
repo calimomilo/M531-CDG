@@ -6,8 +6,8 @@ package main.commandsRelated;
 
 public class Look extends Command{
 
-    public Look() {
-        super("look", "Look around the environment.");
+    public Look(String verb, String description) {
+        super(verb, description);
     }
 
     @Override
