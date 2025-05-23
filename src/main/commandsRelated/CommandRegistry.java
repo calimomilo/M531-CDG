@@ -8,16 +8,17 @@ package main.commandsRelated;
  */
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CommandRegistry {
-    private ArrayList<Command> commands;
+    private HashMap<String, Command> commands;
 
     public CommandRegistry() {
-        commands = new ArrayList<>();
+        commands = new HashMap<>();
     }
 
     public void addCommand(Command command) {
-        commands.add(command);
+        commands.put(command.getVerb(), command);
     }
 
     //TODO: Add commands to the registry
@@ -26,7 +27,7 @@ public class CommandRegistry {
     };
 
 
-    public ArrayList<Command> getCommands() {
+    public HashMap<String, Command> getCommands() {
         return commands;
     }
 
