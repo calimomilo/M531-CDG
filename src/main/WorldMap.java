@@ -1,9 +1,8 @@
 package main;
 
 import java.util.ArrayList;
-import utils.IPrintable;
 
-public class Map {
+public class WorldMap {
     private ArrayList<ArrayList<Location>> allLocations = new ArrayList<>();
     private ArrayList<ArrayList<Location>> discoveredLocations = new ArrayList<>();
     private Location playerLocation;

@@ -10,8 +10,8 @@ public abstract class Command implements ICommand{
     private String verb;
     private String description;
 
-    public Command(String name, String description) {
-        this.verb = name;
+    public Command(String verb, String description) {
+        this.verb = verb;
         this.description = description;
     }  
 
