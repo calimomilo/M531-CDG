@@ -1,9 +1,11 @@
 package main.commandsRelated;
 
+import main.Game;
+
 public class Move extends Command {
 
-    public Move(String name, String description) {
-        super(name, description);
+    public Move(String name, String description, Game game) {
+        super(name, description, game);
     }
 
     @Override
