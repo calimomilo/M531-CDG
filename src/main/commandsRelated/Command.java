@@ -1,5 +1,7 @@
 package main.commandsRelated;
 
+import main.Game;
+
 /**
  @param verb : the name of the command
  @param description : the description of the command
@@ -7,12 +9,14 @@ package main.commandsRelated;
  */
 
 public abstract class Command implements ICommand{
-    private String verb;
-    private String description;
+    private final String verb;
+    private final String description;
+    private final Game game;
 
-    public Command(String verb, String description) {
+    public Command(String verb, String description, Game game) {
         this.verb = verb;
         this.description = description;
+        this.game = game;
     }  
 
     public String getVerb() {
@@ -21,6 +25,10 @@ public abstract class Command implements ICommand{
 
     public String getDescription() {
         return description;
+    }
+
+    public Game getGame() {
+        return game;
     }
 
     @Override
