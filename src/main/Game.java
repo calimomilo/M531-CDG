@@ -1,6 +1,6 @@
 package main;
 
-import main.commandsRelated.CommandRegistry;
+import main.commandsRelated.*;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -18,6 +18,10 @@ public class Game {
         Location l5 = new Location("Bathroom", "There is a shower, a toilet, and a sink with a dirty mirror above it. Doors lead to the south and east.", false);
         Location l6 = new Location("South Hallway", "The hallway stretches to the north, with a door to the west.", false);
         Location l7 = new Location("North Hallway", "The hallway stretches south, with doors to the east and west.", false);
+
+        CommandRegistry cr = new CommandRegistry();
+        Command move = new Move("Move", "Allow the player to move on the map");
+        cr.addCommand(move);
 
         map.addLocation(l1, 2, 3);
         map.addLocation(l2, 2, 2);
