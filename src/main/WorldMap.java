@@ -44,7 +44,7 @@ public class WorldMap {
      * @param location zone à ajouter
      */
     public void addDiscoveredLocation(Location location) {
-        addLocationToArrayList(location, getLocationCoords(location, allLocations)[0], getLocationCoords(location, allLocations)[1], discoveredLocations);
+        addLocationToArrayList(location, getLocationCoords(location)[0], getLocationCoords(location)[1], discoveredLocations);
     }
 
     /**
@@ -67,8 +67,7 @@ public class WorldMap {
                 arrayList.get(x).add(null);
             }
         }
-        arrayList.get(x).add(y, location); // rajoute la zone aux coordonnées
-        arrayList.get(x).remove(y+1); // fonction add pousse l'élément null qui était en y vers y+1, du coup, il faut l'enlever
+        arrayList.get(x).set(y, location); // rajoute la zone aux coordonnées
     }
 
     /**
@@ -107,10 +106,10 @@ public class WorldMap {
      * @param location zone à trouver
      * @return les coordonnées de la zone donnée dans le tableau donné ou null si la zone n'est pas dans le tableau
      */
-    public int[] getLocationCoords(Location location, ArrayList<ArrayList<Location>> arrayList) {
-        for (ArrayList<Location> column : arrayList) {
+    public int[] getLocationCoords(Location location) {
+        for (ArrayList<Location> column : allLocations) {
             if (column.contains(location)) {
-                return new int[] {arrayList.indexOf(column), column.indexOf(location)};
+                return new int[] {allLocations.indexOf(column), column.indexOf(location)};
             }
         }
         System.out.println("Error : location not found");
