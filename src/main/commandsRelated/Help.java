@@ -10,8 +10,8 @@ public class Help extends Command {
     }
 
     /**
-     * Executes the help command, which displays the commands of the game
-     * @param args arguments of the command, should be empty for the command to work
+     * Executes the help command, which displays all the commands of the game
+     * @param args the additional arguments in the input, should be empty for the command to work
      */
     @Override
     public void execute(String[] args) {
