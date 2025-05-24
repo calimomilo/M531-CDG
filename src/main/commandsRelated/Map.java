@@ -8,6 +8,10 @@ public class Map extends Command {
 
     @Override
     public void execute(String[] args) {
-
+        if (args != null) {
+            System.out.println("The command is not valid, please try again");
+        } else {
+            //TODO display the map here
+        }
     }
 }

@@ -12,6 +12,10 @@ public class Look extends Command{
 
     @Override
     public void execute(String[] args) {
+        if (args != null) {
+            System.out.println("The command is not valid, please try again");
+            //TODO recall the parseUserInput here ?
+        }
         System.out.println("You look around and see a beautiful landscape.");
     }
 
