@@ -10,10 +10,10 @@ public class Location implements IPrintable{
     private boolean isLocked;
 
     /**
-     * Constructeur de Location
-     * @param name : nom de cette zone
-     * @param description : description de cette zone
-     * @param isLocked : état de cette zone (fermée / ouverte)
+     * Creates a new location with the specified parameters
+     * @param name name of the location
+     * @param description description of the location
+     * @param isLocked true if the location is locked, false otherwise
      */
     public Location(String name, String description, boolean isLocked) {
         this.name = name;
@@ -21,65 +21,48 @@ public class Location implements IPrintable{
         this.isLocked = isLocked;
     }
 
-    /**
-     *
-     * @return le nom de cette zone
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     *
-     * @return la description de cette zone
-     */
     public String getDescription() {
         return description;
     }
 
-    /**
-     *
-     * @return ArrayList avec les items dans la zone
-     */
     public ArrayList<Item> getItems() {
         return items;
     }
 
     /**
-     * Définit les items dans la zone ; utilisé uniquement pendant la création de la zone
-     * @param items : ArrayList des items à mettre dans la zone
+     * Defines the items in the location ; only used during the game initialisation
+     * @param items : ArrayList of the items to put in the location
      */
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
     /**
-     * Enlève un item spécifique de la liste
-     * @param item : item à enlever
+     * Removes a specific item from the location
+     * @param item the item to remove
      */
     public void removeItem(Item item) {
         items.remove(item);
     }
 
-    /**
-     *
-     * @return l'état de cette zone
-     */
     public boolean getIsLocked() {
         return isLocked;
     }
 
     /**
-     * Définit l'état de la zone ; utilisé une fois pour débloquer une zone fermée
-     * @param isLocked
+     * Defines the locked status of the location, only used once to unlock a locked location
+     * @param isLocked the new status of the location
      */
     public void setIsLocked(boolean isLocked) {
         this.isLocked = isLocked;
     }
 
     /**
-     *
-     * @return le texte à afficher sur la carte : pour l'instant juste le nom
+     * @return the text to display on the map with Array2DPrinter
      */
     @Override
     public String getPrintableString() {
@@ -87,8 +70,8 @@ public class Location implements IPrintable{
     }
 
     /**
-     *
-     * @return true si la zone est fermée et false si la zone est ouverte (pour griser les zones fermées)
+     * Allows locked areas to be grayed out in the map display
+     * @return true if the location is locked, false otherwise
      */
     @Override
     public boolean isGrayedOut() {

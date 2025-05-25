@@ -4,6 +4,9 @@ package main;
 import examples.ConsoleStylingExample;
 import examples.StringManipulation;
 import examples.UserInputExample;
+import main.commandsRelated.Command;
+import main.commandsRelated.CommandRegistry;
+import main.commandsRelated.Help;
 import utils.Array2Dprinter;
 import utils.Color;
 import utils.StringStyling;
@@ -18,13 +21,6 @@ public class Main {
 //        StringManipulation.Example();
 //        ConsoleStylingExample.Example();
 //        UserInputExample.Example();
-
-        System.out.println(StringStyling.StyleString("Starting...", Style.ITALIC, Color.BLACK));
-
-        
-        Game game = new Game();
-        game.run();
-        System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
 
         /* ZONE POUR LES TESTS */
 //        Map map = new Map();
@@ -53,7 +49,23 @@ public class Main {
 //
 //        System.out.println(Array2Dprinter.print2DArray(Array2Dprinter.convert2DArray(map.getAllLocations()), map.getLocationCoords(l5, map.getAllLocations())[0], map.getLocationCoords(l5, map.getAllLocations())[1]));
 
+//        Game testGame = new Game();
+//        System.out.println(testGame.getCommandRegistry().getCommands());
+//        String input = testGame.getUserInput("test2");
+//        System.out.println(input);
+//        testGame.getCommandRegistry().parseCommandInput(input);
+//        testGame.getCommandRegistry().parseCommandInput(testGame.getUserInput("test3"));
+//        System.out.println(testGame.getCommandRegistry().getCommands().containsKey("help"));
+
         /* FIN DE LA ZONE POUR LES TESTS */
+
+        System.out.println(StringStyling.StyleString("Starting...", Style.ITALIC, Color.BLACK));
+
+
+        Game game = new Game();
+        game.run();
+        System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
+
     }
 }
 // TODO : créer les classes, pour l'instant Map, Location, Player, et tout ce qu'il faut pour Move en priorité

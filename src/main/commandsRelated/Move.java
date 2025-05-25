@@ -1,17 +1,15 @@
 package main.commandsRelated;
 
+import main.Game;
+
 public class Move extends Command {
 
-    public Move(String name, String description) {
-        super(name, description);
+    public Move(String name, String description, Game game) {
+        super(name, description, game);
     }
 
     @Override
     public void execute(String[] args) {
-        if (args == null) {
-            System.out.println("The command is not valid, please try again");
-        } else {
-            //TODO move the player to the desired room
-        }
+        System.out.println("Move command executed");
     }
 }

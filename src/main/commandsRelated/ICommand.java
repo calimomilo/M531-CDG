@@ -1,11 +1,12 @@
 package main.commandsRelated;
 
-/**
- * @param execute method takes an array of strings as an argument and performs the command. (return nothing)
- */
 
 public interface ICommand {
 
+    /**
+     * Executes the command with the eventual specified arguments
+     * @param args the additional arguments in the input
+     */
     void execute(String[] args);
 
 }

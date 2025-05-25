@@ -1,18 +1,18 @@
 package main.commandsRelated;
 
-/**
- @param verb : the name of the command
- @param description : the description of the command
- @param execute : abstract method that takes an array of strings as an argument and performs the command.
- */
+import main.Game;
+
 
 public abstract class Command implements ICommand{
-    private String verb;
-    private String description;
+    private final String verb;
+    private final String description;
+    private final Game game;
 
-    public Command(String verb, String description) {
+    public Command(String verb, String description, Game game) {
         this.verb = verb;
         this.description = description;
+        this.game = game;
+        this.game.getCommandRegistry().addCommand(this);
     }  
 
     public String getVerb() {
@@ -21,6 +21,10 @@ public abstract class Command implements ICommand{
 
     public String getDescription() {
         return description;
+    }
+
+    public Game getGame() {
+        return game;
     }
 
     @Override
