@@ -10,6 +10,6 @@ public class Move extends Command {
 
     @Override
     public void execute(String[] args) {
-
+        System.out.println("Move command executed");
     }
 }

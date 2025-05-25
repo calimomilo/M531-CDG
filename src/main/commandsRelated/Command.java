@@ -12,6 +12,7 @@ public abstract class Command implements ICommand{
         this.verb = verb;
         this.description = description;
         this.game = game;
+        this.game.getCommandRegistry().addCommand(this);
     }  
 
     public String getVerb() {

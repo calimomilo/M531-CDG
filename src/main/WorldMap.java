@@ -120,6 +120,7 @@ public class WorldMap {
 
     public void setPlayerLocation(Location playerLocation) {
         this.playerLocation = playerLocation;
+        addDiscoveredLocation(playerLocation);
     }
 
 }
