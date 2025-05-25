@@ -21,4 +21,6 @@ public class Help extends Command {
             }
         }
     }
+    //TODO : exceptions handling for the UnknownCommandException and InvalidCommandException
+    //TODO : add a command to display the help for a specific command
 }
