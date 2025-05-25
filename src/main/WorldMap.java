@@ -91,10 +91,10 @@ public class WorldMap {
      * @return the location found at the coordinates, or null if there isn't one
      */
     public Location getLocation(int x, int y, ArrayList<ArrayList<Location>> arrayList) {
-        if (x < arrayList.size() && y < arrayList.get(x).size()) {
+        if (x < arrayList.size() && y < arrayList.get(x).size() && x >= 0 && y >= 0) {
             return arrayList.get(x).get(y);
         } else {
-            // System.out.println("Error : out of bounds"); TODO : mettre en place la gestion d'erreur, j'imagine que ici ça fera un throw?
+            //System.out.println("Error : out of bounds");
             return null;
         }
     }
@@ -116,6 +116,10 @@ public class WorldMap {
 
     public Location getPlayerLocation() {
         return playerLocation;
+    }
+
+    public int[] getPlayerLocationCoords() {
+        return getLocationCoords(playerLocation);
     }
 
     public void setPlayerLocation(Location playerLocation) {

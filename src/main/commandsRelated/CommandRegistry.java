@@ -2,13 +2,10 @@ package main.commandsRelated;
 
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.*;
 
 public class CommandRegistry {
-    private HashMap<String, Command> commands = new HashMap<>();
+    private TreeMap<String, Command> commands = new TreeMap<>();
 
     /**
      * Adds a command to the registry
@@ -27,21 +24,19 @@ public class CommandRegistry {
         String[] parts = userInput.split(" ");
         String verb = parts[0];
         if (parts.length > 1) {
-            parts = Arrays.copyOfRange(parts, 1, (parts.length - 1));
+            parts = Arrays.copyOfRange(parts, 1, parts.length);
         } else {
             parts[0] = "";
         }
 
         if (this.commands.containsKey(verb)) {
             this.commands.get(verb).execute(parts);
-        } else {
-            //TODO check this
-            //sout a message with an error here?
+            // TODO : mettre en place la gestion d'erreur
         }
 
     };
 
-    public HashMap<String, Command> getCommands() {
+    public TreeMap<String, Command> getCommands() {
         return commands;
     }
 

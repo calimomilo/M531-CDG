@@ -35,8 +35,8 @@ public class Game {
         wm.setPlayerLocation(enthall);
 
         Command move = new Move("move", "Allows the player to move on the map", this);
-        Command help = new Help("help", "Displays all commands", this);
         Command look = new Look("look", "Displays the description of the location of the player", this);
+        Command help = new Help("help", "Displays all commands", this);
         Command map = new Map("map", "Displays the map of the locations discovered by the player", this);
 
     }
@@ -47,7 +47,8 @@ public class Game {
     public void run() {
         System.out.println("Running game...");
         // your runtime code here...
-        int i = 1;
+        getCommandRegistry().getCommands().get("look").execute(new String[]{""});
+        int i = 0;
         do {
             cr.parseCommandInput(getUserInput("What do you want to do?"));
             i++;
