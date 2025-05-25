@@ -19,7 +19,7 @@ public class CommandRegistry {
     }
 
     /**
-     * Parses the user input and calls the appropriate command
+     * Parses the user input and calls the appropriate command with the additional arguments passed as an Array
      * @param userInput the input from the user
      */
     public void parseCommandInput(String userInput){

@@ -37,15 +37,13 @@ public class Game {
         Command help = new Help("help", "Displays all commands", this);
 
         cr.addCommand(move);
+        cr.addCommand(help);
     }
     
     public void run() {
         System.out.println("Running game...");
         // your runtime code here...
-
-        CommandRegistry cr = new CommandRegistry();
         int i = 1;
-        System.out.println(getUserInput(""));
         do {
             cr.parseCommandInput(getUserInput("What do you want to do?"));
             i++;
@@ -58,8 +56,7 @@ public class Game {
         String userInput;
         Scanner sc = new Scanner(System.in);
         System.out.println(message);
-        userInput = sc.nextLine(); // TODO : le scanner fait buguer le truc quand on essaie de lancer le programme, trouver ce qui ne va pas
-        sc.close();
+        userInput = sc.nextLine();
         return userInput;
     }
 

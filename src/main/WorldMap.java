@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+// TODO : update javadoc
 
 public class WorldMap {
     private ArrayList<ArrayList<Location>> allLocations = new ArrayList<>();
