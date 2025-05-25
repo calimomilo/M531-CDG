@@ -1,7 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-// TODO : update javadoc
 
 public class WorldMap {
     private ArrayList<ArrayList<Location>> allLocations = new ArrayList<>();
@@ -9,18 +8,17 @@ public class WorldMap {
     private Location playerLocation;
 
     /**
-     *
-     * @return le tableau 2D des zones de la carte
+     * @return the 2D ArrayList of all existing locations
      */
     public ArrayList<ArrayList<Location>> getAllLocations() {
         return allLocations;
     }
 
     /**
-     * Ajoute une zone à la carte aux coordonnées indiquées
-     * @param location zone à ajouter
-     * @param x première coordonnée
-     * @param y deuxième coordonnée
+     * Adds a location at the specified coordinates to the ArrayList with all existing locations
+     * @param location the location to be added
+     * @param x first coordinate (horizontal)
+     * @param y second coordinate (vertical)
      */
     public void addLocation(Location location, int x, int y) {
         if (containsLocation(location, allLocations)) {
@@ -33,27 +31,26 @@ public class WorldMap {
     }
 
     /**
-     *
-     * @return le tableau 2D des zones déjà visitées par le joueur
+     * @return the 2DArrayList of the locations discovered by the player
      */
     public ArrayList<ArrayList<Location>> getDiscoveredLocations() {
         return discoveredLocations;
     }
 
     /**
-     * Ajoute une zone dans le tableau des zones visitées au même endroit que dans la carte
-     * @param location zone à ajouter
+     * Adds a location from the ArrayList of all locations to the ArrayList of discovered locations at the same coordinates
+     * @param location the location to be added ; has to exist in the allLocations ArrayList
      */
     public void addDiscoveredLocation(Location location) {
         addLocationToArrayList(location, getLocationCoords(location)[0], getLocationCoords(location)[1], discoveredLocations);
     }
 
     /**
-     * Ajoute une zone aux coordonnées données dans un tableau donné
-     * @param location zone à ajouter
-     * @param x coordonnée x
-     * @param y coordonnée y
-     * @param arrayList tableau dans lequel ajouter la zone
+     * Adds a location to the specified 2D ArrayList at the specified coordinates
+     * @param location the location to be added
+     * @param x first coordinate (horizontal)
+     * @param y second coordinate (vertical)
+     * @param arrayList 2D ArrayList in which to add the location
      */
     private void addLocationToArrayList(Location location, int x, int y, ArrayList<ArrayList<Location>> arrayList) {
         if (x >= arrayList.size()) { // si la coordonnée x est en dehors du tableau existant, rajoute le bon nombre de colonnes
@@ -72,10 +69,10 @@ public class WorldMap {
     }
 
     /**
-     * Vérifie si la zone donnée existe dans le tableau donné
-     * @param location zone à vérifier
-     * @param arrayList tableau à vérifier
-     * @return
+     * Verifies that the location exists in the specified 2D ArrayList
+     * @param location the location to find
+     * @param arrayList the 2D ArrayList in which to look for the location
+     * @return true if the location is in the ArrayList, false otherwise
      */
     public boolean containsLocation(Location location, ArrayList<ArrayList<Location>> arrayList) {
         boolean contains = false;
@@ -88,24 +85,24 @@ public class WorldMap {
     }
 
     /**
-     *
-     * @param x coordonnée x
-     * @param y coordonnée y
-     * @return la zone qui se trouve aux coordonnées données dans le tableau donné ou null si les coordonnées n'existent pas dans le tableau
+     * Returns the location at the specified coordinates in the specified 2D ArrayList
+     * @param x first coordinate (horizontal)
+     * @param y second coordinate (vertical)
+     * @return the location found at the coordinates, or null if there isn't one
      */
     public Location getLocation(int x, int y, ArrayList<ArrayList<Location>> arrayList) {
         if (x < arrayList.size() && y < arrayList.get(x).size()) {
             return arrayList.get(x).get(y);
         } else {
-            System.out.println("Error : out of bounds");
+            // System.out.println("Error : out of bounds"); TODO : mettre en place la gestion d'erreur, j'imagine que ici ça fera un throw?
             return null;
         }
     }
 
     /**
-     *
-     * @param location zone à trouver
-     * @return les coordonnées de la zone donnée dans le tableau donné ou null si la zone n'est pas dans le tableau
+     * Returns the coordinates of the specified location in the allLocations ArrayList. The coordinates for the same location in the discoveredLocations ArrayList are the same
+     * @param location the location to find
+     * @return an Array with the coordinates of the location, or null if the location isn't in the ArrayList
      */
     public int[] getLocationCoords(Location location) {
         for (ArrayList<Location> column : allLocations) {
@@ -117,18 +114,10 @@ public class WorldMap {
         return null;
     }
 
-    /**
-     *
-     * @return la zone où se trouve le joueur
-     */
     public Location getPlayerLocation() {
         return playerLocation;
     }
 
-    /**
-     * Définit la nouvelle zone du joueur
-     * @param playerLocation : nouvelle zone du joueur
-     */
     public void setPlayerLocation(Location playerLocation) {
         this.playerLocation = playerLocation;
     }

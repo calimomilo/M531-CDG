@@ -14,9 +14,11 @@ public class Game {
     private Player player = new Player();
     private ItemManager im = new ItemManager();
 
+    /**
+     * Initialization of a new game, including the creation of all necessary elements
+     */
     public Game(){
         System.out.println("Initializing game...");
-        // TODO : code de création des éléments du jeu (instanciation de tous les objets en gros)
         Location l1 = new Location("Kitchen", "There is a table in the middle of the room, and a sink and fridge against the north wall.", false);
         Location l2 = new Location("Living Room", "There are two beanbags around a carpet in the center of the room. A door leads west and the kitchen can be seen to the north.", false);
         Location l3 = new Location("Bedroom", "There is a bed in a corner and a closet near the door to the east.", false);
@@ -39,7 +41,10 @@ public class Game {
         cr.addCommand(move);
         cr.addCommand(help);
     }
-    
+
+    /**
+     * Runs the game
+     */
     public void run() {
         System.out.println("Running game...");
         // your runtime code here...
@@ -52,6 +57,11 @@ public class Game {
         // end of game
     }
 
+    /**
+     * Displays the specified message and gets the following user input
+     * @param message the message to display
+     * @return the user's input
+     */
     public String getUserInput(String message) {
         String userInput;
         Scanner sc = new Scanner(System.in);
