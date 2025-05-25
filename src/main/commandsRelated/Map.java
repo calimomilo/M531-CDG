@@ -16,7 +16,10 @@ public class Map extends Command {
     @Override
     public void execute(String[] args) {
         if (args[0].isEmpty()) {
-            System.out.println(Array2Dprinter.print2DArray(Array2Dprinter.convert2DArray(getGame().getWorldMap().getDiscoveredLocations()), getGame().getWorldMap().getLocationCoords(getGame().getWorldMap().getPlayerLocation())[0], getGame().getWorldMap().getLocationCoords(getGame().getWorldMap().getPlayerLocation())[1]));
+            System.out.println(Array2Dprinter.print2DArray(Array2Dprinter.convert2DArray(getGame().getWorldMap().getAllLocations()),
+                    getGame().getWorldMap().getLocationCoords(getGame().getWorldMap().getPlayerLocation())[0],
+                    getGame().getWorldMap().getLocationCoords(getGame().getWorldMap().getPlayerLocation())[1]));
+            // TODO : gérer l'affichage seulement des zones visitées
         }
     }
 }
