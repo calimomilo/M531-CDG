@@ -52,7 +52,7 @@ public class Game {
         do {
             cr.parseCommandInput(getUserInput("What do you want to do?"));
             i++;
-        } while (i < 3); //CHANGE THIS CONDITION !!!
+        } while (i < 10); //CHANGE THIS CONDITION !!!
 
         // end of game
     }

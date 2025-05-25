@@ -11,6 +11,8 @@ public class Move extends Command {
 
     @Override
     public void execute(String[] args) {
+        // TODO : gestion du nombre d'arguments passés en paramètre
+
         String direction = args[0];
         int x = getGame().getWorldMap().getPlayerLocationCoords()[0];
         int y = getGame().getWorldMap().getPlayerLocationCoords()[1];
@@ -30,6 +32,7 @@ public class Move extends Command {
             } else {
                 getGame().getWorldMap().setPlayerLocation(newLocation);
                 getGame().getCommandRegistry().getCommands().get("look").execute(new String[]{""});
+                // TODO : si déplacement dans une zone déjà visitée, n'afficher que le nom
             }
         } else {
             System.out.println("Impossible to move there");
