@@ -10,7 +10,7 @@ public class Help extends Command {
     @Override
     public void execute(String[] args) {
         if(args[0].isEmpty()){
-            for (Map.Entry<String, Command> entry : )
+            //TODO print the help here
         }
     }
 }
