@@ -51,6 +51,7 @@ public class Game {
         do {
             userInput = getUserInput("What do you want to do?");
             if (userInput.equalsIgnoreCase("exit")) {
+                System.out.println("See ya later!");
                 System.out.println("Exiting game...");
                 break;
             }

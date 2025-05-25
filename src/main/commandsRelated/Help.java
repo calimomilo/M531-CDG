@@ -19,6 +19,7 @@ public class Help extends Command {
             for (Map.Entry<String, Command> entry : getGame().getCommandRegistry().getCommands().entrySet()) {
                 System.out.println(entry.getKey() + ": " + entry.getValue().getDescription());
             }
+            System.out.println("exit: Exits the game");
         }
     }
     //TODO : exceptions handling for the UnknownCommandException and InvalidCommandException
