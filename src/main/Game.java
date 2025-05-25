@@ -46,14 +46,17 @@ public class Game {
      */
     public void run() {
         System.out.println("Running game...");
-        // your runtime code here...
         getCommandRegistry().getCommands().get("look").execute(new String[]{""});
-        int i = 0;
+        String userInput;
         do {
-            cr.parseCommandInput(getUserInput("What do you want to do?"));
-            i++;
-        } while (i < 10); //CHANGE THIS CONDITION !!!
-
+            userInput = getUserInput("What do you want to do?");
+            if (userInput.equalsIgnoreCase("exit")) {
+                System.out.println("See ya later!");
+                System.out.println("Exiting game...");
+                break;
+            }
+            cr.parseCommandInput(userInput);
+        } while (true); // Loop runs until "exit" is entered
         // end of game
     }
 
