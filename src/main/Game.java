@@ -1,5 +1,6 @@
 package main;
 
+import exceptions.InvalidCommandException;
 import main.commandsRelated.*;
 
 import java.util.NoSuchElementException;
@@ -47,6 +48,7 @@ public class Game {
     public void run() {
         System.out.println("Running game...");
         getCommandRegistry().getCommands().get("look").execute(new String[]{""});
+
         String userInput;
         do {
             userInput = getUserInput("What do you want to do?");

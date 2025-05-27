@@ -1,5 +1,6 @@
 package main.commandsRelated;
 
+import exceptions.InvalidCommandException;
 import main.Game;
 import utils.Array2Dprinter;
 
@@ -14,12 +15,14 @@ public class Map extends Command {
      * @param args the additional arguments in the input, should be empty for the command to work
      */
     @Override
-    public void execute(String[] args) {
+    public void execute(String[] args) throws InvalidCommandException {
         if (args[0].isEmpty()) {
             System.out.println(Array2Dprinter.print2DArray(Array2Dprinter.convert2DArray(getGame().getWorldMap().getAllLocations()),
                     getGame().getWorldMap().getLocationCoords(getGame().getWorldMap().getPlayerLocation())[0],
                     getGame().getWorldMap().getLocationCoords(getGame().getWorldMap().getPlayerLocation())[1]));
             // TODO : gérer l'affichage seulement des zones visitées
+        } else {
+            throw new InvalidCommandException();
         }
     }
 }
