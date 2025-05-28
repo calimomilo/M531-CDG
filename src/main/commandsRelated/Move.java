@@ -3,6 +3,9 @@ package main.commandsRelated;
 import exceptions.InvalidCommandException;
 import main.Game;
 import main.Location;
+import utils.Color;
+import utils.StringStyling;
+import utils.Style;
 
 import java.util.Arrays;
 
@@ -33,9 +36,13 @@ public class Move extends Command {
                 if (newLocation.getIsLocked()) {
                     System.out.println("Zone locked");
                 } else {
+                    boolean isNotNew = getGame().getWorldMap().containsLocation(newLocation, getGame().getWorldMap().getDiscoveredLocations());
                     getGame().getWorldMap().setPlayerLocation(newLocation);
-                    getGame().getCommandRegistry().getCommands().get("look").execute(new String[]{""});
-                    // TODO : si déplacement dans une zone déjà visitée, n'afficher que le nom
+                    if (isNotNew) {
+                        System.out.println(StringStyling.StyleString(newLocation.getName(), Style.BOLD, Color.WHITE));
+                    } else {
+                        getGame().getCommandRegistry().getCommands().get("look").execute(new String[]{""});
+                    }
                 }
             } else {
                 System.out.println("Impossible to move there");

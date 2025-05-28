@@ -34,8 +34,8 @@ public class Array2Dprinter {
     }
 
     /**
-     * Convert a 2D array List of IPrintable objects to a 2D array.
-     * @param arrayList2D The 2D list to be converted.
+     * Converts the discovered locations 2D ArrayList into a 2D Array of IPrintable
+     * @param wm the active world map
      * @return The converted 2D array
      */
     public static IPrintable[][] convert2DArray(WorldMap wm) { // for some reason wouldn't accept ArrayList and Location so had to switch types
