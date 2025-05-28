@@ -34,7 +34,7 @@ public class Move extends Command {
 
             if (newLocation != null) {
                 if (newLocation.getIsLocked()) {
-                    System.out.println("Zone locked");
+                    System.out.println("The door is locked. Maybe there is a key somewhere?");
                 } else {
                     boolean isNotNew = getGame().getWorldMap().containsLocation(newLocation, getGame().getWorldMap().getDiscoveredLocations());
                     getGame().getWorldMap().setPlayerLocation(newLocation);
@@ -45,7 +45,7 @@ public class Move extends Command {
                     }
                 }
             } else {
-                System.out.println("Impossible to move there");
+                System.out.println("You can't go that way.");
             }
         } else {
             throw new InvalidCommandException();

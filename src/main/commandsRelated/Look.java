@@ -24,12 +24,15 @@ public class Look extends Command{
             System.out.println(getGame().getWorldMap().getPlayerLocation().getDescription());
 
             int itemAmount = getGame().getWorldMap().getPlayerLocation().getItems().size();
-            StringBuilder msg = new StringBuilder("There is a ");
-            for (int i = 0; i < itemAmount; i++) {
-                String name = getGame().getWorldMap().getPlayerLocation().getItems().get(i).getName();
-                msg.append(name).append(i == itemAmount - 1 ? "." : i == itemAmount - 2 ? " and a " : ", a ");
+
+            if (itemAmount != 0) {
+                StringBuilder msg = new StringBuilder("There is a ");
+                for (int i = 0; i < itemAmount; i++) {
+                    String name = getGame().getWorldMap().getPlayerLocation().getItems().get(i).getName();
+                    msg.append(name).append(i == itemAmount - 1 ? "." : i == itemAmount - 2 ? " and a " : ", a ");
+                }
+                System.out.println(msg);
             }
-            System.out.println(msg);
         } else {
             throw new InvalidCommandException();
         }

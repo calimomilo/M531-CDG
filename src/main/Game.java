@@ -80,6 +80,7 @@ public class Game {
         System.out.println(message);
         System.out.print("> ");
         userInput = sc.nextLine();
+        System.out.println();
         return userInput;
     }
 
