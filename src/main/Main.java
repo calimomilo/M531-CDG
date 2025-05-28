@@ -59,12 +59,12 @@ public class Main {
 
         /* FIN DE LA ZONE POUR LES TESTS */
 
-        System.out.println(StringStyling.StyleString("Starting...", Style.ITALIC, Color.BLACK));
+        System.out.println(StringStyling.StyleStringBright("Starting...", Style.ITALIC, Color.BLACK));
 
 
         Game game = new Game();
         game.run();
-        System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
+        System.out.println(StringStyling.StyleStringBright("Terminating...", Style.ITALIC, Color.BLACK));
 
     }
 }

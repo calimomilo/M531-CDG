@@ -1,11 +1,8 @@
 package utils;
 
-import java.util.Scanner;
-
 public class StringStyling {
 
     private static final String template = "\033[%s;%sm";
-    private static final String styleTemplate = "\033[%sm";
     private static final String backgroundTemplate = "\033[%sm";
     private static final String RESET = "\033[0m";
 
@@ -17,17 +14,8 @@ public class StringStyling {
      * @return the styled string
      */
     public static String StyleString(String value, Style style, Color c){
-        return StyleString(value, style, c, true);
-    }
-
-    /**
-     * Styles a string with the given style
-     * @param value the string to be styled
-     * @param style the text style
-     * @return the styled string
-     */
-    public static String StyleString(String value, Style style) {
-        return textPrefix(style) + value + RESET;
+        String color = textPrefix(style, c, false);
+        return color + value + RESET;
     }
 
     /**
@@ -35,11 +23,10 @@ public class StringStyling {
      * @param value the string to be styled
      * @param style the text style (e.g., bold, italic)
      * @param c the text color
-     * @param highInstensity whether to use high intensity colors
      * @return the styled string
      */
-    public static String StyleString(String value, Style style, Color c, boolean highInstensity){
-        String color = textPrefix(style, c, highInstensity);
+    public static String StyleStringBright(String value, Style style, Color c){
+        String color = textPrefix(style, c, true);
         return color + value + RESET;
     }
 
@@ -104,10 +91,6 @@ public class StringStyling {
 
     private static String textPrefix(Style style, Color textColor, boolean highInstensity) {
         return String.format(template,style,textColor.toColorString(highInstensity));
-    }
-
-    private static String textPrefix(Style style) {
-        return String.format(styleTemplate,style);
     }
 
 }

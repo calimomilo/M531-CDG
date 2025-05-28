@@ -2,6 +2,9 @@ package main;
 
 import exceptions.InvalidCommandException;
 import main.commandsRelated.*;
+import utils.Color;
+import utils.StringStyling;
+import utils.Style;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -16,7 +19,7 @@ public class Game {
      * Initialization of a new game, including the creation of all necessary elements
      */
     public Game(){
-        System.out.println("Initializing game...");
+        System.out.println(StringStyling.StyleStringBright("Initializing game...", Style.ITALIC, Color.BLACK));
         Location kitch = new Location("Kitchen", "There is a table in the middle of the room, and a sink and fridge against the north wall.", false);
         Location livr = new Location("Living Room", "There are two beanbags around a carpet in the center of the room. A door leads west and the kitchen can be seen to the north.", false);
         Location bedr = new Location("Bedroom", "There is a bed in a corner and a closet near the door to the east.", false);
@@ -46,15 +49,15 @@ public class Game {
      * Runs the game
      */
     public void run() {
-        System.out.println("Running game...");
+        System.out.println(StringStyling.StyleStringBright("Running game...\n", Style.ITALIC, Color.BLACK));
         getCommandRegistry().getCommands().get("look").execute(new String[]{""});
 
         String userInput;
         do {
-            userInput = getUserInput("What do you want to do?");
+            userInput = getUserInput("\nWhat do you want to do?");
             if (userInput.equalsIgnoreCase("exit")) {
                 System.out.println("See ya later!");
-                System.out.println("Exiting game...");
+                System.out.println(StringStyling.StyleStringBright("Exiting game...", Style.ITALIC, Color.BLACK));
                 break;
             }
             cr.parseCommandInput(userInput);

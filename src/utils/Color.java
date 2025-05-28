@@ -9,7 +9,8 @@ public enum Color {
     BLUE(34),
     MAGENTA(35),
     CYAN(36),
-    WHITE(37);
+    WHITE(37),
+    DEFAULT(39);
 
     private final static int HIGH = 60;
 

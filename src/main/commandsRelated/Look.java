@@ -19,7 +19,7 @@ public class Look extends Command{
     @Override
     public void execute(String[] args) throws InvalidCommandException {
         if(args[0].isEmpty()) {
-            System.out.println(StringStyling.StyleString(getGame().getWorldMap().getPlayerLocation().getName(), Style.BOLD));
+            System.out.println(StringStyling.StyleString(getGame().getWorldMap().getPlayerLocation().getName(), Style.BOLD, Color.DEFAULT));
             System.out.println(getGame().getWorldMap().getPlayerLocation().getDescription());
         } else {
             throw new InvalidCommandException();

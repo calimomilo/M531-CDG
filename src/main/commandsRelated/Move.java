@@ -39,7 +39,7 @@ public class Move extends Command {
                     boolean isNotNew = getGame().getWorldMap().containsLocation(newLocation, getGame().getWorldMap().getDiscoveredLocations());
                     getGame().getWorldMap().setPlayerLocation(newLocation);
                     if (isNotNew) {
-                        System.out.println(StringStyling.StyleString(newLocation.getName(), Style.BOLD));
+                        System.out.println(StringStyling.StyleString(newLocation.getName(), Style.BOLD, Color.DEFAULT));
                     } else {
                         getGame().getCommandRegistry().getCommands().get("look").execute(new String[]{""});
                     }

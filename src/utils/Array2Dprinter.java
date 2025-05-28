@@ -14,8 +14,8 @@ public class Array2Dprinter {
     private static int SPACING = 1;
 
     private static Style highlightTextStyle = Style.BOLD;
-    private static Color highlightTextColor = Color.WHITE;
-    private static Color highlightBackgroundColor = Color.BLUE;
+    private static Color highlightTextColor = Color.DEFAULT;
+    private static Color highlightBackgroundColor = Color.GREEN;
 
     public static void setHighlightStyle(Style style, Color color, Color backgroundColor) {
         highlightTextColor = color;
@@ -25,7 +25,7 @@ public class Array2Dprinter {
 
     private static Color grayedOutTextColor = Color.BLACK;
     private static Style grayedOutTextStyle = Style.NORMAL;
-    private static Color grayedOutBackgroundColor = Color.BLACK;
+    private static Color grayedOutBackgroundColor = Color.DEFAULT;
 
     public static void setGrayedOutStyle(Style style, Color color, Color backgroundColor) {
         grayedOutTextColor = color;
@@ -106,7 +106,7 @@ public class Array2Dprinter {
             if (isHighlightRow && col == highlightColumn) {
                 text = StringStyling.StyleString(text, highlightTextStyle, highlightTextColor, highlightBackgroundColor);
             } else if (element != null && element.isGrayedOut()) {
-                text = StringStyling.StyleString(text, grayedOutTextStyle, grayedOutTextColor, grayedOutBackgroundColor);
+                text = StringStyling.StyleStringBright(text, grayedOutTextStyle, grayedOutTextColor, grayedOutBackgroundColor);
             }
 
             output.append(" ".repeat(SPACING))
