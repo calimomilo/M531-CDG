@@ -6,10 +6,14 @@ import main.Item;
 
 public class Key extends Item{
 
-    private Location location;
+    private Location locationLinked;
 
-    public Key(String name, String description, Location location) {
+    public Key(String name, String description, Location locationLinked) {
         super(name, description);
-        this.location = location;
+        this.locationLinked = locationLinked;
+    }
+
+    public void unlockLocation(){
+        this.locationLinked.setIsLocked(false);
     }
 }
