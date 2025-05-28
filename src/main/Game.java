@@ -71,6 +71,7 @@ public class Game {
         String userInput;
         Scanner sc = new Scanner(System.in);
         System.out.println(message);
+        System.out.print("> ");
         userInput = sc.nextLine();
         return userInput;
     }

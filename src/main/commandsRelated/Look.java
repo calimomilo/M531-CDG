@@ -2,6 +2,9 @@ package main.commandsRelated;
 
 import exceptions.InvalidCommandException;
 import main.Game;
+import utils.Color;
+import utils.StringStyling;
+import utils.Style;
 
 public class Look extends Command{
 
@@ -16,7 +19,7 @@ public class Look extends Command{
     @Override
     public void execute(String[] args) throws InvalidCommandException {
         if(args[0].isEmpty()) {
-            System.out.println(getGame().getWorldMap().getPlayerLocation().getName());
+            System.out.println(StringStyling.StyleString(getGame().getWorldMap().getPlayerLocation().getName(), Style.BOLD));
             System.out.println(getGame().getWorldMap().getPlayerLocation().getDescription());
         } else {
             throw new InvalidCommandException();

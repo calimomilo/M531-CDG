@@ -1,8 +1,11 @@
 package utils;
 
+import java.util.Scanner;
+
 public class StringStyling {
 
     private static final String template = "\033[%s;%sm";
+    private static final String styleTemplate = "\033[%sm";
     private static final String backgroundTemplate = "\033[%sm";
     private static final String RESET = "\033[0m";
 
@@ -14,7 +17,11 @@ public class StringStyling {
      * @return the styled string
      */
     public static String StyleString(String value, Style style, Color c){
-        return StyleString(value, style, c, false);
+        return StyleString(value, style, c, true);
+    }
+
+    public static String StyleString(String value, Style style) {
+        return textPrefix(style) + value + RESET;
     }
 
     /**
@@ -26,7 +33,7 @@ public class StringStyling {
      * @return the styled string
      */
     public static String StyleString(String value, Style style, Color c, boolean highInstensity){
-        String color = textPrefix(style, c, true);
+        String color = textPrefix(style, c, highInstensity);
         return color + value + RESET;
     }
 
@@ -93,6 +100,10 @@ public class StringStyling {
 
     private static String textPrefix(Style style, Color textColor, boolean highInstensity) {
         return String.format(template,style,textColor.toColorString(highInstensity));
+    }
+
+    private static String textPrefix(Style style) {
+        return String.format(styleTemplate,style);
     }
 
 }
