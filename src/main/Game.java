@@ -39,7 +39,7 @@ public class Game {
         Command look = new Look("look", "Displays the description of the location of the player", this);
         Command help = new Help("help", "Displays all commands", this);
         Command map = new Map("map", "Displays the map of the locations discovered by the player", this);
-
+        
     }
 
     /**
