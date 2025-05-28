@@ -17,10 +17,9 @@ public class Map extends Command {
     @Override
     public void execute(String[] args) throws InvalidCommandException {
         if (args[0].isEmpty()) {
-            System.out.println(Array2Dprinter.print2DArray(Array2Dprinter.convert2DArray(getGame().getWorldMap().getAllLocations()),
+            System.out.println(Array2Dprinter.print2DArray(Array2Dprinter.convert2DArray(getGame().getWorldMap()),
                     getGame().getWorldMap().getLocationCoords(getGame().getWorldMap().getPlayerLocation())[0],
                     getGame().getWorldMap().getLocationCoords(getGame().getWorldMap().getPlayerLocation())[1]));
-            // TODO : gérer l'affichage seulement des zones visitées
         } else {
             throw new InvalidCommandException();
         }

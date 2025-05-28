@@ -1,6 +1,7 @@
 package utils;
 
 import main.Location;
+import main.WorldMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,18 +38,19 @@ public class Array2Dprinter {
      * @param arrayList2D The 2D list to be converted.
      * @return The converted 2D array
      */
-    public static IPrintable[][] convert2DArray(ArrayList<ArrayList<Location>> arrayList2D) { // for some reason wouldn't accept ArrayList and Location so had to switch types
-        int cols = arrayList2D.size();
+    public static IPrintable[][] convert2DArray(WorldMap wm) { // for some reason wouldn't accept ArrayList and Location so had to switch types
+        int maxcols = wm.getAllLocations().size();
+        int cols = wm.getDiscoveredLocations().size();
         int maxRows = 0;
-        for (ArrayList<Location> column : arrayList2D) {
+        for (ArrayList<Location> column : wm.getAllLocations()) {
             maxRows = Math.max(maxRows, column.size());
         }
-        IPrintable[][] array2D = new IPrintable[maxRows][cols];
+        IPrintable[][] array2D = new IPrintable[maxRows][maxcols];
         for (int i = 0; i < maxRows; i++) {
             for (int j = 0; j < cols; j++) {
-                int columnSize = arrayList2D.get(j).size();
+                int columnSize = wm.getDiscoveredLocations().get(j).size();
                 if (i >= maxRows-columnSize) {
-                    array2D[i][j] = arrayList2D.get(j).get(maxRows-i-1);
+                    array2D[i][j] = wm.getDiscoveredLocations().get(j).get(maxRows-i-1);
                 }
             }
         }
