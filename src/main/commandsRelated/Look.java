@@ -2,6 +2,7 @@ package main.commandsRelated;
 
 import exceptions.InvalidCommandException;
 import main.Game;
+import main.Item;
 import utils.Color;
 import utils.StringStyling;
 import utils.Style;
@@ -21,6 +22,14 @@ public class Look extends Command{
         if(args[0].isEmpty()) {
             System.out.println(StringStyling.StyleString(getGame().getWorldMap().getPlayerLocation().getName(), Style.BOLD, Color.DEFAULT));
             System.out.println(getGame().getWorldMap().getPlayerLocation().getDescription());
+
+            int itemAmount = getGame().getWorldMap().getPlayerLocation().getItems().size();
+            StringBuilder msg = new StringBuilder("There is a ");
+            for (int i = 0; i < itemAmount; i++) {
+                String name = getGame().getWorldMap().getPlayerLocation().getItems().get(i).getName();
+                msg.append(name).append(i == itemAmount - 1 ? "." : i == itemAmount - 2 ? " and a " : ", a ");
+            }
+            System.out.println(msg);
         } else {
             throw new InvalidCommandException();
         }

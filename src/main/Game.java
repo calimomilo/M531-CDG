@@ -43,6 +43,10 @@ public class Game {
         Command help = new Help("help", "Displays all commands", this);
         Command map = new Map("map", "Displays the map of the locations discovered by the player", this);
 
+//        new Item("sharp knife", "This is a very, very sharp knife.");
+//        new Item("weird clock", "The clock appears to be stuck. The time says 01:25");
+//        new Item("pencil", "Just a regular pencil.");
+
     }
 
     /**
