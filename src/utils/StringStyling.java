@@ -20,6 +20,12 @@ public class StringStyling {
         return StyleString(value, style, c, true);
     }
 
+    /**
+     * Styles a string with the given style
+     * @param value the string to be styled
+     * @param style the text style
+     * @return the styled string
+     */
     public static String StyleString(String value, Style style) {
         return textPrefix(style) + value + RESET;
     }
@@ -68,8 +74,7 @@ public class StringStyling {
     /**
      * Sets the console's text style and color
      * @param style the text style (e.g., bold, italic)
-     * @param textColor the text color
-     * @param highInstensity whether to use high intensity colors
+     * @param color the text color
      * @return the ANSI escape code for the text style and color
      */
     public static String toStyleColor(Style style, Color color) {
@@ -78,8 +83,7 @@ public class StringStyling {
 
     /**
      * Sets the console's background style and color
-     * @param color the text color
-     * @param highInstensity whether to use high intensity colors
+     * @param c the text color
      * @return the ANSI escape code for the text style and color
      */
     public static String toBackgroundColor(Color c) {
