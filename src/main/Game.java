@@ -2,6 +2,9 @@ package main;
 
 import exceptions.InvalidCommandException;
 import main.commandsRelated.*;
+import main.itemsRelated.Key;
+import main.itemsRelated.Letter;
+import main.itemsRelated.Puzzle;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -9,8 +12,9 @@ import java.util.Scanner;
 public class Game {
     private WorldMap wm = new WorldMap();
     private CommandRegistry cr = new CommandRegistry();
-    private Player player = new Player();
-    private ItemManager im = new ItemManager();
+    private Player player = new Player("John Doe");
+    private Inventory inventory = new Inventory(player);
+    private ItemManager im = new ItemManager(inventory);
 
     /**
      * Initialization of a new game, including the creation of all necessary elements
@@ -39,7 +43,21 @@ public class Game {
         Command look = new Look("look", "Displays the description of the location of the player", this);
         Command help = new Help("help", "Displays all commands", this);
         Command map = new Map("map", "Displays the map of the locations discovered by the player", this);
+
         
+        //zone de test pour les items :
+
+        Item item1 = new Key("Key1", "A rusty key", bedr);
+        Item item2 = new Letter("Letter1", "A shiny letter");
+        Item item3 = new Puzzle("Puzzle1", "A tricky puzzle", "Solution1", (Key) item1);
+        //vérifier que les items vont bien dans l'inventaire du joueur
+        im.addItem(item1);
+        im.addItem(item2);
+        im.addItem(item3);
+        // im.addItem(item1);
+        // im.addItem(item2);
+        //fin de la zone de test pour les items
+
     }
 
     /**

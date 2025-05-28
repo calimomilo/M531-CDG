@@ -7,6 +7,7 @@ import examples.UserInputExample;
 import main.commandsRelated.Command;
 import main.commandsRelated.CommandRegistry;
 import main.commandsRelated.Help;
+import main.itemsRelated.Key;
 import utils.Array2Dprinter;
 import utils.Color;
 import utils.StringStyling;
@@ -58,6 +59,7 @@ public class Main {
 //        System.out.println(testGame.getCommandRegistry().getCommands().containsKey("help"));
 
         /* FIN DE LA ZONE POUR LES TESTS */
+
 
         System.out.println(StringStyling.StyleString("Starting...", Style.ITALIC, Color.BLACK));
 
