@@ -1,6 +1,9 @@
 package main.commandsRelated;
 
 
+import exceptions.InvalidCommandException;
+import exceptions.UnknownCommandException;
+
 import javax.swing.*;
 import java.util.*;
 
@@ -29,10 +32,20 @@ public class CommandRegistry {
             parts[0] = "";
         }
 
-        if (this.commands.containsKey(verb)) {
-            this.commands.get(verb).execute(parts);
-            // TODO : mettre en place la gestion d'erreur
+        try {
+            if (this.commands.containsKey(verb)) {
+                this.commands.get(verb).execute(parts);
+            } else {
+                throw new UnknownCommandException();
+            }
         }
+        catch (InvalidCommandException e) {
+            System.out.println("I do not understand \"" + userInput + "\"");
+        }
+        catch (UnknownCommandException e) {
+            System.out.println("I do not know the command \"" + verb + "\"\nHint : type \"help\" for available commands");
+        }
+
 
     };
 
