@@ -5,6 +5,9 @@ import main.commandsRelated.*;
 import utils.Color;
 import utils.StringStyling;
 import utils.Style;
+import main.itemsRelated.Key;
+import main.itemsRelated.Letter;
+import main.itemsRelated.Puzzle;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -12,8 +15,9 @@ import java.util.Scanner;
 public class Game {
     private WorldMap wm = new WorldMap();
     private CommandRegistry cr = new CommandRegistry();
-    private Player player = new Player();
-    private ItemManager im = new ItemManager();
+    private Player player = new Player("John Doe");
+    private Inventory inventory = new Inventory(player);
+    private ItemManager im = new ItemManager(inventory);
 
     /**
      * Initialization of a new game, including the creation of all necessary elements
@@ -43,9 +47,20 @@ public class Game {
         Command help = new Help("help", "Displays all commands", this);
         Command map = new Map("map", "Displays the map of the locations discovered by the player", this);
 
-//        new Item("sharp knife", "This is a very, very sharp knife.");
-//        new Item("weird clock", "The clock appears to be stuck. The time says 01:25");
-//        new Item("pencil", "Just a regular pencil.");
+        
+        //zone de test pour les items :
+
+        Item item1 = new Key("Key1", "A rusty key", bedr);
+        Item item3 = new Puzzle("Puzzle1", "A tricky puzzle", "Solution1", (Key) item1);
+        Item item2 = new Letter("Letter1", "A shiny letter", (Puzzle) item3);
+   
+        //vérifier que les items vont bien dans l'inventaire du joueur
+        im.addItemToInventory(item1);
+        im.addItemToInventory(item2);
+        im.addItemToInventory(item3);
+        // im.addItem(item1);
+        // im.addItem(item2);
+        //fin de la zone de test pour les items
 
     }
 

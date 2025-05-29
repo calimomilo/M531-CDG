@@ -7,6 +7,7 @@ import examples.UserInputExample;
 import main.commandsRelated.Command;
 import main.commandsRelated.CommandRegistry;
 import main.commandsRelated.Help;
+import main.itemsRelated.Key;
 import utils.Array2Dprinter;
 import utils.Color;
 import utils.StringStyling;
