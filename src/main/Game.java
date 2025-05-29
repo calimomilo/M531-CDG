@@ -48,8 +48,9 @@ public class Game {
         //zone de test pour les items :
 
         Item item1 = new Key("Key1", "A rusty key", bedr);
-        Item item2 = new Letter("Letter1", "A shiny letter");
         Item item3 = new Puzzle("Puzzle1", "A tricky puzzle", "Solution1", (Key) item1);
+        Item item2 = new Letter("Letter1", "A shiny letter", (Puzzle) item3);
+   
         //vérifier que les items vont bien dans l'inventaire du joueur
         im.addItemToInventory(item1);
         im.addItemToInventory(item2);
