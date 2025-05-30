@@ -2,6 +2,12 @@ package main;
 
 import exceptions.InvalidCommandException;
 import main.commandsRelated.*;
+import utils.Color;
+import utils.StringStyling;
+import utils.Style;
+import main.itemsRelated.Key;
+import main.itemsRelated.Letter;
+import main.itemsRelated.Puzzle;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -9,14 +15,15 @@ import java.util.Scanner;
 public class Game {
     private WorldMap wm = new WorldMap();
     private CommandRegistry cr = new CommandRegistry();
-    private Player player = new Player();
-    private ItemManager im = new ItemManager();
+    private Player player = new Player("John Doe");
+    private Inventory inventory = new Inventory(player);
+    private ItemManager im = new ItemManager(inventory);
 
     /**
      * Initialization of a new game, including the creation of all necessary elements
      */
     public Game(){
-        System.out.println("Initializing game...");
+        System.out.println(StringStyling.StyleStringBright("Initializing game...", Style.ITALIC, Color.BLACK));
         Location kitch = new Location("Kitchen", "There is a table in the middle of the room, and a sink and fridge against the north wall.", false);
         Location livr = new Location("Living Room", "There are two beanbags around a carpet in the center of the room. A door leads west and the kitchen can be seen to the north.", false);
         Location bedr = new Location("Bedroom", "There is a bed in a corner and a closet near the door to the east.", false);
@@ -40,21 +47,36 @@ public class Game {
         Command help = new Help("help", "Displays all commands", this);
         Command map = new Map("map", "Displays the map of the locations discovered by the player", this);
 
+        
+        //zone de test pour les items :
+
+        Item item1 = new Key("Key1", "A rusty key", bedr);
+        Item item3 = new Puzzle("Puzzle1", "A tricky puzzle", "Solution1", (Key) item1);
+        Item item2 = new Letter("Letter1", "A shiny letter", (Puzzle) item3);
+   
+        //vérifier que les items vont bien dans l'inventaire du joueur
+        im.addItemToInventory(item1);
+        im.addItemToInventory(item2);
+        im.addItemToInventory(item3);
+        // im.addItem(item1);
+        // im.addItem(item2);
+        //fin de la zone de test pour les items
+
     }
 
     /**
      * Runs the game
      */
     public void run() {
-        System.out.println("Running game...");
+        System.out.println(StringStyling.StyleStringBright("Running game...\n", Style.ITALIC, Color.BLACK));
         getCommandRegistry().getCommands().get("look").execute(new String[]{""});
 
         String userInput;
         do {
-            userInput = getUserInput("What do you want to do?");
+            userInput = getUserInput("\nWhat do you want to do?");
             if (userInput.equalsIgnoreCase("exit")) {
                 System.out.println("See ya later!");
-                System.out.println("Exiting game...");
+                System.out.println(StringStyling.StyleStringBright("Exiting game...", Style.ITALIC, Color.BLACK));
                 break;
             }
             cr.parseCommandInput(userInput);
@@ -71,7 +93,9 @@ public class Game {
         String userInput;
         Scanner sc = new Scanner(System.in);
         System.out.println(message);
+        System.out.print("> ");
         userInput = sc.nextLine();
+        System.out.println();
         return userInput;
     }
 

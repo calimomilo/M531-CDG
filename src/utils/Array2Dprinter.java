@@ -1,6 +1,7 @@
 package utils;
 
 import main.Location;
+import main.WorldMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,8 @@ public class Array2Dprinter {
     private static int SPACING = 1;
 
     private static Style highlightTextStyle = Style.BOLD;
-    private static Color highlightTextColor = Color.WHITE;
-    private static Color highlightBackgroundColor = Color.BLUE;
+    private static Color highlightTextColor = Color.DEFAULT;
+    private static Color highlightBackgroundColor = Color.GREEN;
 
     public static void setHighlightStyle(Style style, Color color, Color backgroundColor) {
         highlightTextColor = color;
@@ -24,7 +25,7 @@ public class Array2Dprinter {
 
     private static Color grayedOutTextColor = Color.BLACK;
     private static Style grayedOutTextStyle = Style.NORMAL;
-    private static Color grayedOutBackgroundColor = Color.BLACK;
+    private static Color grayedOutBackgroundColor = Color.DEFAULT;
 
     public static void setGrayedOutStyle(Style style, Color color, Color backgroundColor) {
         grayedOutTextColor = color;
@@ -33,22 +34,23 @@ public class Array2Dprinter {
     }
 
     /**
-     * Convert a 2D array List of IPrintable objects to a 2D array.
-     * @param arrayList2D The 2D list to be converted.
+     * Converts the discovered locations 2D ArrayList into a 2D Array of IPrintable
+     * @param wm the active world map
      * @return The converted 2D array
      */
-    public static IPrintable[][] convert2DArray(ArrayList<ArrayList<Location>> arrayList2D) { // for some reason wouldn't accept ArrayList and Location so had to switch types
-        int cols = arrayList2D.size();
+    public static IPrintable[][] convert2DArray(WorldMap wm) { // for some reason wouldn't accept ArrayList and Location so had to switch types
+        int maxcols = wm.getAllLocations().size();
+        int cols = wm.getDiscoveredLocations().size();
         int maxRows = 0;
-        for (ArrayList<Location> column : arrayList2D) {
+        for (ArrayList<Location> column : wm.getAllLocations()) {
             maxRows = Math.max(maxRows, column.size());
         }
-        IPrintable[][] array2D = new IPrintable[maxRows][cols];
+        IPrintable[][] array2D = new IPrintable[maxRows][maxcols];
         for (int i = 0; i < maxRows; i++) {
             for (int j = 0; j < cols; j++) {
-                int columnSize = arrayList2D.get(j).size();
+                int columnSize = wm.getDiscoveredLocations().get(j).size();
                 if (i >= maxRows-columnSize) {
-                    array2D[i][j] = arrayList2D.get(j).get(maxRows-i-1);
+                    array2D[i][j] = wm.getDiscoveredLocations().get(j).get(maxRows-i-1);
                 }
             }
         }
@@ -104,7 +106,7 @@ public class Array2Dprinter {
             if (isHighlightRow && col == highlightColumn) {
                 text = StringStyling.StyleString(text, highlightTextStyle, highlightTextColor, highlightBackgroundColor);
             } else if (element != null && element.isGrayedOut()) {
-                text = StringStyling.StyleString(text, grayedOutTextStyle, grayedOutTextColor, grayedOutBackgroundColor);
+                text = StringStyling.StyleStringBright(text, grayedOutTextStyle, grayedOutTextColor, grayedOutBackgroundColor);
             }
 
             output.append(" ".repeat(SPACING))
