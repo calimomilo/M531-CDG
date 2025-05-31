@@ -22,7 +22,7 @@ public class Game {
         System.out.println(StringStyling.StyleStringBright("Initializing game...", Style.ITALIC, Color.BLACK));
         Location kitch = new Location("Kitchen", "There is a table in the middle of the room, and a sink and fridge against the north wall.", false);
         Location livr = new Location("Living Room", "There are two beanbags around a carpet in the center of the room. A door leads west and the kitchen can be seen to the north.", false);
-        Location bedr = new Location("Bedroom", "There is a bed in a corner and a closet near the door to the east.", false);
+        Location bedr = new Location("Bedroom", "There is a bed in a corner and a closet near the door to the east.", true);
         Location enthall = new Location("Entrance Hall", "A hallway stretches to the north.", false);
         Location bathr = new Location("Bathroom", "There is a shower, a toilet, and a sink with a dirty mirror above it. Doors lead to the south and east.", false);
         Location hallws = new Location("South Hallway", "The hallway stretches to the north, with a door to the west.", false);
@@ -46,6 +46,7 @@ public class Game {
         Command list = new List("list", "Displays all items from your inventory", this);
         Command take = new Take("take", "Allows the player to take an item from the location and place it in their inventory", this);
         Command say = new Say("say", "Saying the correct words to solve a puzzle will drop a key", this);
+        Command use = new Use("use", "Allows the player to use an item in their inventory", this);
 
         Key item1 = new Key("Rusty Key", "A rusty key", bedr);
         Puzzle item3 = new Puzzle("Puzzle1", "A tricky puzzle", "solution", item1, im);
