@@ -15,7 +15,7 @@ public class Map extends Command {
      * @param args the additional arguments in the input, should be empty for the command to work
      */
     @Override
-    public void execute(String[] args) throws InvalidCommandException {
+    public void execute(String[] args) {
         if (args[0].isEmpty()) {
             System.out.println(Array2Dprinter.print2DArray(Array2Dprinter.convert2DArray(getGame().getWorldMap()),
                     getGame().getWorldMap().getLocationCoords(getGame().getWorldMap().getPlayerLocation())[0],

@@ -7,8 +7,6 @@ import utils.Color;
 import utils.StringStyling;
 import utils.Style;
 
-import java.util.Arrays;
-
 public class Move extends Command {
 
     public Move(String name, String description, Game game) {
@@ -16,7 +14,7 @@ public class Move extends Command {
     }
 
     @Override
-    public void execute(String[] args) throws InvalidCommandException {
+    public void execute(String[] args) {
         if (args.length == 1) {
             String direction = args[0];
             int x = getGame().getWorldMap().getPlayerLocationCoords()[0];

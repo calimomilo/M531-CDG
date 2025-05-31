@@ -1,9 +1,8 @@
 package main.commandsRelated;
 
 import exceptions.InvalidCommandException;
-import exceptions.UnknownItemException;
+import exceptions.ItemNotInLocationException;
 import main.Game;
-import main.itemsRelated.Item;
 
 public class Take extends Command {
     public Take(String name, String description, Game game) {
@@ -11,17 +10,17 @@ public class Take extends Command {
     }
 
     @Override
-    public void execute(String[] args) throws InvalidCommandException {
+    public void execute(String[] args) {
         if (!args[0].isEmpty()) {
             StringBuilder string = new StringBuilder();
             for (String arg : args) {
                 string.append(arg).append(" ");
             }
-            String objectToInspect = string.toString().trim();
-            if (getGame().getWorldMap().getPlayerLocation().getItem(objectToInspect) != null) {
-                getGame().getItemManager().moveItemToInventory(getGame().getWorldMap().getPlayerLocation().getItem(objectToInspect));
+            String objectToTake = string.toString().trim();
+            if (getGame().getWorldMap().getPlayerLocation().getItem(objectToTake) != null) {
+                getGame().getItemManager().moveItemToInventory(getGame().getWorldMap().getPlayerLocation().getItem(objectToTake));
             } else {
-                throw new UnknownItemException(objectToInspect);
+                throw new ItemNotInLocationException(objectToTake);
             }
         } else {
             throw new InvalidCommandException();

@@ -15,7 +15,7 @@ public class Help extends Command {
      * @param args the additional arguments in the input, should be empty for the command to work
      */
     @Override
-    public void execute(String[] args) throws InvalidCommandException {
+    public void execute(String[] args) {
         if(args[0].isEmpty()){
             for (Map.Entry<String, Command> entry : getGame().getCommandRegistry().getCommands().entrySet()) {
                 System.out.println(entry.getKey() + ": " + entry.getValue().getDescription());

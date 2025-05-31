@@ -2,11 +2,10 @@ package main.commandsRelated;
 
 
 import exceptions.InvalidCommandException;
+import exceptions.ItemNotInLocationException;
 import exceptions.UnknownCommandException;
-import exceptions.UnknownItemException;
+import exceptions.ItemNotInInventoryException;
 
-import javax.swing.*;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class CommandRegistry {
@@ -44,8 +43,10 @@ public class CommandRegistry {
             System.out.println("I do not know the command \"" + verb + "\".\nHint : type help to see the list of available commands.");
         } catch (InvalidCommandException e) {
             System.out.println("I do not understand \"" + userInput + "\".");
-        } catch (UnknownItemException e) {
-            System.out.println("I do not know the object \"" + e.getMessage() + "\".");
+        } catch (ItemNotInInventoryException e) {
+            System.out.println("The \"" + e.getMessage() + "\" is not in your inventory.");
+        } catch (ItemNotInLocationException e) {
+            System.out.println("The \"" + e.getMessage() + "\" isn't here.");
         }
 
     };

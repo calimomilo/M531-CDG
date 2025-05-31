@@ -1,7 +1,7 @@
 package main.commandsRelated;
 
 import exceptions.InvalidCommandException;
-import exceptions.UnknownItemException;
+import exceptions.ItemNotInInventoryException;
 import main.Game;
 import main.itemsRelated.Key;
 
@@ -11,7 +11,7 @@ public class Use extends Command {
     }
 
     @Override
-    public void execute(String[] args) throws InvalidCommandException {
+    public void execute(String[] args) {
         if (args[0].isEmpty()) {
             throw new InvalidCommandException();
         } else {
@@ -21,10 +21,9 @@ public class Use extends Command {
             }
             String objectToUse = string.toString().trim();
             if (getGame().getPlayer().getInventory().getItem(objectToUse) != null) {
-                if (!(getGame().getPlayer().getInventory().getItem(objectToUse) instanceof Key)) {
+                if (!(getGame().getPlayer().getInventory().getItem(objectToUse) instanceof Key key)) {
                     System.out.println("You can't use this object ; it's not a key");
                 } else {
-                    Key key = (Key) getGame().getPlayer().getInventory().getItem(objectToUse);
                     int[] playerCoords = getGame().getWorldMap().getPlayerLocationCoords();
                     int[] coords = getGame().getWorldMap().getLocationCoords(key.getLocationLinked());
 
@@ -37,7 +36,7 @@ public class Use extends Command {
                     }
                 }
             } else {
-                throw new UnknownItemException(objectToUse);
+                throw new ItemNotInInventoryException(objectToUse);
             }
         }
     }

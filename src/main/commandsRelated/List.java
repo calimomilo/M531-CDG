@@ -11,7 +11,7 @@ public class List extends Command {
     }
 
     @Override
-    public void execute(String[] args) throws InvalidCommandException {
+    public void execute(String[] args) {
         if (args[0].isEmpty()) {
             for (Item i : getGame().getPlayer().getInventory().getItems()) {
                 System.out.println(i.getName());

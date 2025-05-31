@@ -17,7 +17,7 @@ public class Look extends Command{
      * @param args the additional arguments in the input, should be empty for the command to work
      */
     @Override
-    public void execute(String[] args) throws InvalidCommandException {
+    public void execute(String[] args) {
         if(args[0].isEmpty()) {
             System.out.println(StringStyling.StyleString(getGame().getWorldMap().getPlayerLocation().getName(), Style.BOLD, Color.DEFAULT));
             System.out.println(getGame().getWorldMap().getPlayerLocation().getDescription());
