@@ -1,7 +1,5 @@
 package main.itemsRelated;
 
-import main.Item;
-
 public class Letter extends Item{
 
      private Puzzle puzzle;

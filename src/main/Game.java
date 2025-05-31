@@ -1,15 +1,12 @@
 package main;
 
-import exceptions.InvalidCommandException;
 import main.commandsRelated.*;
+import main.itemsRelated.*;
 import utils.Color;
 import utils.StringStyling;
 import utils.Style;
-import main.itemsRelated.Key;
-import main.itemsRelated.Letter;
-import main.itemsRelated.Puzzle;
 
-import java.util.NoSuchElementException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
@@ -18,6 +15,7 @@ public class Game {
     private Player player = new Player("John Doe");
     private Inventory inventory = new Inventory(player);
     private ItemManager im = new ItemManager(inventory);
+    private ArrayList<Item> itemInLocation = new ArrayList<>();
 
     /**
      * Initialization of a new game, including the creation of all necessary elements
@@ -46,6 +44,8 @@ public class Game {
         Command look = new Look("look", "Displays the description of the location of the player", this);
         Command help = new Help("help", "Displays all commands", this);
         Command map = new Map("map", "Displays the map of the locations discovered by the player", this);
+        Command inspect = new Inspect("inspect", "Displays information about an object in the inventory", this);
+        Command list = new List("list", "Displays all items from your inventory", this);
 
         
         //zone de test pour les items :
@@ -56,11 +56,17 @@ public class Game {
    
         //vérifier que les items vont bien dans l'inventaire du joueur
         im.addItemToInventory(item1);
-        im.addItemToInventory(item2);
+        //im.addItemToInventory(item2);
         im.addItemToInventory(item3);
         // im.addItem(item1);
         // im.addItem(item2);
         //fin de la zone de test pour les items
+
+        itemInLocation.add(item1);
+        itemInLocation.add(item2);
+        itemInLocation.add(item3);
+        hallwn.setItems(itemInLocation);
+
 
     }
 

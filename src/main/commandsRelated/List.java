@@ -2,6 +2,7 @@ package main.commandsRelated;
 
 import exceptions.InvalidCommandException;
 import main.Game;
+import main.itemsRelated.Item;
 
 public class List extends Command {
 
@@ -12,7 +13,9 @@ public class List extends Command {
     @Override
     public void execute(String[] args) throws InvalidCommandException {
         if (args[0].isEmpty()) {
-            System.out.println(getGame().getItemManager().getInventory());
+            for (Item i : getGame().getItemManager().getInventory().getItems()) {
+                System.out.println(i.getName());
+            }
         } else {
             throw new InvalidCommandException();
         }

@@ -1,6 +1,4 @@
 package main.itemsRelated;
-import main.Inventory;
-import main.Item;
 
 public class Puzzle extends Item{
 

@@ -2,6 +2,7 @@ package main.commandsRelated;
 
 import exceptions.InvalidCommandException;
 import main.Game;
+import main.itemsRelated.Item;
 
 public class Take extends Command {
     public Take(String name, String description, Game game) {
@@ -10,10 +11,12 @@ public class Take extends Command {
 
     @Override
     public void execute(String[] args) throws InvalidCommandException {
-        if (args[0].isEmpty()) {
-            throw new InvalidCommandException();
+        if (!args[0].isEmpty()) {
+            for(Item i : getGame().getWorldMap().getPlayerLocation().getItems()) {
+                getGame().getItemManager().addItemToInventory(i);
+            }
         } else {
-            //TODO put item in inventory
+            throw new InvalidCommandException();
         }
     }
 }

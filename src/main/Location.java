@@ -1,6 +1,8 @@
 package main;
 
 import java.util.ArrayList;
+
+import main.itemsRelated.Item;
 import utils.IPrintable;
 
 public class Location implements IPrintable{
@@ -39,6 +41,15 @@ public class Location implements IPrintable{
      */
     public void setItems(ArrayList<Item> items) {
         this.items = items;
+    }
+
+    public Item getItem(String name) {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item;
+            }
+        }
+        return null; // If item is not in the ArrayList
     }
 
     /**

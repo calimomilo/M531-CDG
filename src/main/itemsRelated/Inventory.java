@@ -1,4 +1,6 @@
-package main;
+package main.itemsRelated;
+
+import main.Player;
 
 import java.util.ArrayList;
 
@@ -11,10 +13,8 @@ public class Inventory {
         this.owner = owner;
     }
 
-    public void getItems() {
-        for (Item i : items) {
-            System.out.println(i);
-        }
+    public ArrayList<Item> getItems() {
+        return this.items;
     }
 
     public void addItem(Item item) {

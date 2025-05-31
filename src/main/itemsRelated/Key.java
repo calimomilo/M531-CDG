@@ -2,8 +2,6 @@ package main.itemsRelated;
 
 import main.Location;
 
-import main.Item;
-
 public class Key extends Item{
 
     private Location locationLinked;

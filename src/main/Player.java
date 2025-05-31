@@ -1,5 +1,7 @@
 package main;
 
+import main.itemsRelated.Inventory;
+
 public class Player {
     private String name;
     private Inventory inventory;

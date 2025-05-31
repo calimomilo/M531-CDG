@@ -2,7 +2,6 @@ package main.commandsRelated;
 
 import exceptions.InvalidCommandException;
 import main.Game;
-import main.Item;
 import utils.Color;
 import utils.StringStyling;
 import utils.Style;

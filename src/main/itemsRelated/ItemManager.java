@@ -1,6 +1,6 @@
-package main;
+package main.itemsRelated;
 
-import main.itemsRelated.Letter;
+import main.Location;
 
 public class ItemManager {
     

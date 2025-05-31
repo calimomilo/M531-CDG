@@ -11,10 +11,12 @@ public class Inspect extends Command {
 
     @Override
     public void execute(String[] args) throws InvalidCommandException {
-        if (args.length == 1) {
+        if (!args[0].isEmpty()) {
             String objectToInspect = args[0];
-            System.out.println(getGame().getItemManager().getName());
-            System.out.println(getGame().getItemManager().getDescription());
+            System.out.println(getGame().getItemManager().getInventory().getItem(objectToInspect).getName());
+            System.out.println(getGame().getItemManager().getInventory().getItem(objectToInspect).getDescription());
+        } else {
+            throw new InvalidCommandException();
         }
     }
 }

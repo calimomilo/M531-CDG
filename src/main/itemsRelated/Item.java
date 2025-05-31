@@ -1,4 +1,4 @@
-package main;
+package main.itemsRelated;
 
 public abstract class Item {
     private String name;
@@ -16,4 +16,6 @@ public abstract class Item {
     public String getDescription() {
         return this.description;
     }
+
+
 }
