@@ -13,7 +13,7 @@ public class List extends Command {
     @Override
     public void execute(String[] args) throws InvalidCommandException {
         if (args[0].isEmpty()) {
-            for (Item i : getGame().getItemManager().getInventory().getItems()) {
+            for (Item i : getGame().getPlayer().getInventory().getItems()) {
                 System.out.println(i.getName());
             }
         } else {

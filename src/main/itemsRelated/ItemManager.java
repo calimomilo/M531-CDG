@@ -1,31 +1,19 @@
 package main.itemsRelated;
 
-import main.Location;
+import main.Game;
 
 public class ItemManager {
     
-    private Inventory inventory;
+    private Game game;
 
-    public ItemManager(Inventory inventory) {
-        this.inventory = inventory;
+    public ItemManager(Game game) {
+        this.game = game;
     }
 
-    public Boolean checkItemIsInLocation(Item item, Location location) {
-        return location.getItems().contains(item);
-    }
-
-    public void addItemToInventory(Item item) {
-        if(item instanceof Letter){
-            inventory.addItem(item);
-            System.out.println(item.getName() + " has been added to your inventory.");
-        } else {
-            System.out.println("You cannot add this item to your inventory.");
-        }
-    }
-
-
-    public Inventory getInventory() {
-        return inventory;
+    public void moveItemToInventory(Item item) {
+        game.getWorldMap().getPlayerLocation().getItems().remove(item);
+        game.getPlayer().getInventory().addItem(item);
+        System.out.println(item.getName() + " has been added to your inventory.");
     }
 
 }

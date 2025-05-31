@@ -4,11 +4,10 @@ import main.itemsRelated.Inventory;
 
 public class Player {
     private String name;
-    private Inventory inventory;
+    private Inventory inventory = new Inventory();
 
     public Player(String name) {
         this.name = name;
-        this.inventory = new Inventory(this);
     }
 
     public String getName() {

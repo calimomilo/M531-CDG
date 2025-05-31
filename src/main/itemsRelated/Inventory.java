@@ -5,13 +5,7 @@ import main.Player;
 import java.util.ArrayList;
 
 public class Inventory {
-
-    private Player owner;
     private ArrayList<Item> items = new ArrayList<>();
-
-    public Inventory(Player owner) {
-        this.owner = owner;
-    }
 
     public ArrayList<Item> getItems() {
         return this.items;

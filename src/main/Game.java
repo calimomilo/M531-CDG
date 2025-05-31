@@ -13,9 +13,7 @@ public class Game {
     private WorldMap wm = new WorldMap();
     private CommandRegistry cr = new CommandRegistry();
     private Player player = new Player("John Doe");
-    private Inventory inventory = new Inventory(player);
-    private ItemManager im = new ItemManager(inventory);
-    private ArrayList<Item> itemInLocation = new ArrayList<>();
+    private ItemManager im = new ItemManager(this);
 
     /**
      * Initialization of a new game, including the creation of all necessary elements

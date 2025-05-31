@@ -13,7 +13,7 @@ public class Take extends Command {
     public void execute(String[] args) throws InvalidCommandException {
         if (!args[0].isEmpty()) {
             for(Item i : getGame().getWorldMap().getPlayerLocation().getItems()) {
-                getGame().getItemManager().addItemToInventory(i);
+                getGame().getItemManager().moveItemToInventory(i);
             }
         } else {
             throw new InvalidCommandException();
