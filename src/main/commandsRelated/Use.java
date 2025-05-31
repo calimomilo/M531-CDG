@@ -22,7 +22,7 @@ public class Use extends Command {
             String objectToUse = string.toString().trim();
             if (getGame().getPlayer().getInventory().getItem(objectToUse) != null) {
                 if (!(getGame().getPlayer().getInventory().getItem(objectToUse) instanceof Key key)) {
-                    System.out.println("You can't use this object ; it's not a key");
+                    System.out.println("You can't use this object");
                 } else {
                     int[] playerCoords = getGame().getWorldMap().getPlayerLocationCoords();
                     int[] coords = getGame().getWorldMap().getLocationCoords(key.getLocationLinked());

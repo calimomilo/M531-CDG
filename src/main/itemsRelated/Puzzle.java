@@ -21,7 +21,6 @@ public class Puzzle extends Item {
             isSolved = true;
             System.out.println("Congratulations, you solved this puzzle!");
             dropKey();
-            // TODO : should the puzzle be removed once its solved?
             return true;
         }
         return false;

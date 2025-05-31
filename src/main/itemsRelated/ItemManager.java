@@ -13,7 +13,7 @@ public class ItemManager {
     public void moveItemToInventory(Item item) {
         game.getWorldMap().getPlayerLocation().getItems().remove(item);
         game.getPlayer().getInventory().addItem(item);
-        System.out.println(item.getName() + " has been added to your inventory.");
+        System.out.println("The " + item.getName().toLowerCase() + " has been added to your inventory.");
     }
 
 }

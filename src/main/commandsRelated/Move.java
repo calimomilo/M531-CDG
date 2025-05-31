@@ -33,6 +33,7 @@ public class Move extends Command {
             if (newLocation != null) {
                 if (newLocation.getIsLocked()) {
                     System.out.println("The door is locked. Maybe there is a key somewhere?");
+                    //TODO : see if we display the locked locations => would be a problem with the isNotNew below
                 } else {
                     boolean isNotNew = getGame().getWorldMap().containsLocation(newLocation, getGame().getWorldMap().getDiscoveredLocations());
                     getGame().getWorldMap().setPlayerLocation(newLocation);

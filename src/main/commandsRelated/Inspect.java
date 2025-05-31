@@ -3,6 +3,9 @@ package main.commandsRelated;
 import exceptions.InvalidCommandException;
 import exceptions.ItemNotInInventoryException;
 import main.Game;
+import utils.Color;
+import utils.StringStyling;
+import utils.Style;
 
 public class Inspect extends Command {
 
@@ -19,7 +22,7 @@ public class Inspect extends Command {
             }
             String objectToInspect = string.toString().trim();
             if (getGame().getPlayer().getInventory().getItem(objectToInspect) != null) {
-                System.out.println(getGame().getPlayer().getInventory().getItem(objectToInspect).getName());
+                System.out.println(StringStyling.StyleString(getGame().getPlayer().getInventory().getItem(objectToInspect).getName(), Style.BOLD, Color.DEFAULT));
                 System.out.println(getGame().getPlayer().getInventory().getItem(objectToInspect).getDescription());
             } else {
                 throw new ItemNotInInventoryException(objectToInspect);
