@@ -1,6 +1,8 @@
 package main.commandsRelated;
 
 import exceptions.InvalidCommandException;
+import exceptions.UnknownCommandException;
+import exceptions.UnknownItemException;
 import main.Game;
 
 public class Inspect extends Command {
@@ -10,11 +12,19 @@ public class Inspect extends Command {
     }
 
     @Override
-    public void execute(String[] args) throws InvalidCommandException {
+    public void execute(String[] args) throws InvalidCommandException, UnknownItemException {
         if (!args[0].isEmpty()) {
-            String objectToInspect = args[0];
-            System.out.println(getGame().getItemManager().getInventory().getItem(objectToInspect).getName());
-            System.out.println(getGame().getItemManager().getInventory().getItem(objectToInspect).getDescription());
+            StringBuilder string = new StringBuilder();
+            for (String arg : args) {
+                string.append(arg).append(" ");
+            }
+            String objectToInspect = string.toString().trim();
+            if (getGame().getPlayer().getInventory().getItem(objectToInspect) != null) {
+                System.out.println(getGame().getPlayer().getInventory().getItem(objectToInspect).getName());
+                System.out.println(getGame().getPlayer().getInventory().getItem(objectToInspect).getDescription());
+            } else {
+                throw new UnknownItemException(objectToInspect);
+            }
         } else {
             throw new InvalidCommandException();
         }

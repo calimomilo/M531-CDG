@@ -45,26 +45,12 @@ public class Game {
         Command inspect = new Inspect("inspect", "Displays information about an object in the inventory", this);
         Command list = new List("list", "Displays all items from your inventory", this);
 
-        
-        //zone de test pour les items :
+        Key item1 = new Key("Rusty Key", "A rusty key", bedr);
+        Puzzle item3 = new Puzzle("Puzzle1", "A tricky puzzle", "Solution1", item1, im);
+        Letter item2 = new Letter("Letter1", "A shiny letter");
 
-        Item item1 = new Key("Key1", "A rusty key", bedr);
-        Item item3 = new Puzzle("Puzzle1", "A tricky puzzle", "Solution1", (Key) item1);
-        Item item2 = new Letter("Letter1", "A shiny letter", (Puzzle) item3);
-   
-        //vérifier que les items vont bien dans l'inventaire du joueur
-        im.addItemToInventory(item1);
-        //im.addItemToInventory(item2);
-        im.addItemToInventory(item3);
-        // im.addItem(item1);
-        // im.addItem(item2);
-        //fin de la zone de test pour les items
-
-        itemInLocation.add(item1);
-        itemInLocation.add(item2);
-        itemInLocation.add(item3);
-        hallwn.setItems(itemInLocation);
-
+        hallwn.setItems(new ArrayList<>(){{add(item1);add(item2);add(item3);}});
+        im.moveItemToInventory(item1);
 
     }
 

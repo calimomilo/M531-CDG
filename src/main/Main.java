@@ -7,7 +7,10 @@ import examples.UserInputExample;
 import main.commandsRelated.Command;
 import main.commandsRelated.CommandRegistry;
 import main.commandsRelated.Help;
+import main.itemsRelated.Item;
 import main.itemsRelated.Key;
+import main.itemsRelated.Letter;
+import main.itemsRelated.Puzzle;
 import utils.Array2Dprinter;
 import utils.Color;
 import utils.StringStyling;
@@ -57,7 +60,18 @@ public class Main {
 //        testGame.getCommandRegistry().parseCommandInput(input);
 //        testGame.getCommandRegistry().parseCommandInput(testGame.getUserInput("test3"));
 //        System.out.println(testGame.getCommandRegistry().getCommands().containsKey("help"));
-
+//
+//        Item item1 = new Key("Key1", "A rusty key", bedr);
+//        Item item3 = new Puzzle("Puzzle1", "A tricky puzzle", "Solution1", (Key) item1);
+//        Item item2 = new Letter("Letter1", "A shiny letter", (Puzzle) item3);
+//
+//        vérifier que les items vont bien dans l'inventaire du joueur
+//
+//        im.moveItemToInventory(item1);
+//        im.moveItemToInventory(item2);
+//        im.moveItemToInventory(item3);
+//
+//
         /* FIN DE LA ZONE POUR LES TESTS */
 
         System.out.println(StringStyling.StyleStringBright("Starting...", Style.ITALIC, Color.BLACK));

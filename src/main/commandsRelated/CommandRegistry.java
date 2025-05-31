@@ -1,7 +1,12 @@
 package main.commandsRelated;
 
 
+import exceptions.InvalidCommandException;
+import exceptions.UnknownCommandException;
+import exceptions.UnknownItemException;
+
 import javax.swing.*;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class CommandRegistry {
@@ -29,9 +34,18 @@ public class CommandRegistry {
             parts[0] = "";
         }
 
-        if (this.commands.containsKey(verb)) {
-            this.commands.get(verb).execute(parts);
-            // TODO : mettre en place la gestion d'erreur
+        try {
+            if (this.commands.containsKey(verb)) {
+                this.commands.get(verb).execute(parts);
+            } else {
+                throw new UnknownCommandException();
+            }
+        } catch (UnknownCommandException e) {
+            System.out.println("I do not know the command \"" + verb + "\".\nHint : type help to see the list of available commands.");
+        } catch (InvalidCommandException e) {
+            System.out.println("I do not understand \"" + userInput + "\".");
+        } catch (UnknownItemException e) {
+            System.out.println("I do not know the object \"" + e.getMessage() + "\".");
         }
 
     };

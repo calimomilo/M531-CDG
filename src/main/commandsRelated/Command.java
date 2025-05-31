@@ -1,6 +1,8 @@
 package main.commandsRelated;
 
 import exceptions.InvalidCommandException;
+import exceptions.UnknownCommandException;
+import exceptions.UnknownItemException;
 import main.Game;
 
 
@@ -29,5 +31,5 @@ public abstract class Command implements ICommand{
     }
 
     @Override
-    public abstract void execute(String[] args) throws InvalidCommandException;
+    public abstract void execute(String[] args) throws InvalidCommandException, UnknownItemException;
 }
