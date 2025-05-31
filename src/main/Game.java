@@ -44,6 +44,7 @@ public class Game {
         Command map = new Map("map", "Displays the map of the locations discovered by the player", this);
         Command inspect = new Inspect("inspect", "Displays information about an object in the inventory", this);
         Command list = new List("list", "Displays all items from your inventory", this);
+        Command take = new Take("take", "Allows the player to take an item from the location and place it in their inventory", this);
 
         Key item1 = new Key("Rusty Key", "A rusty key", bedr);
         Puzzle item3 = new Puzzle("Puzzle1", "A tricky puzzle", "Solution1", item1, im);
