@@ -2,6 +2,8 @@ package main.commandsRelated;
 
 import exceptions.InvalidCommandException;
 import main.Game;
+import main.itemsRelated.Item;
+import main.itemsRelated.Puzzle;
 
 public class Say extends Command {
     public Say(String name, String description, Game game) {
@@ -13,7 +15,23 @@ public class Say extends Command {
         if (args[0].isEmpty()) {
             throw new InvalidCommandException();
         } else {
-            //TODO if answer is correct put key in inventory else...do what?
+            StringBuilder string = new StringBuilder();
+            for (String arg : args) {
+                string.append(arg).append(" ");
+            }
+            String attempt = string.toString().trim();
+            Puzzle puzzle = null;
+            for (Item item : getGame().getWorldMap().getPlayerLocation().getItems()) {
+                if (item instanceof Puzzle) {
+                    puzzle = (Puzzle) item;
+                }
+            }
+
+            if (puzzle == null) {
+                System.out.println("There is no puzzle here !");
+            } else if (!puzzle.solve(attempt)) {
+                System.out.println("Nothing happens...");
+            }
         }
     }
 }

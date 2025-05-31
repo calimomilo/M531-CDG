@@ -45,13 +45,13 @@ public class Game {
         Command inspect = new Inspect("inspect", "Displays information about an object in the inventory", this);
         Command list = new List("list", "Displays all items from your inventory", this);
         Command take = new Take("take", "Allows the player to take an item from the location and place it in their inventory", this);
+        Command say = new Say("say", "Saying the correct words to solve a puzzle will drop a key", this);
 
         Key item1 = new Key("Rusty Key", "A rusty key", bedr);
-        Puzzle item3 = new Puzzle("Puzzle1", "A tricky puzzle", "Solution1", item1, im);
+        Puzzle item3 = new Puzzle("Puzzle1", "A tricky puzzle", "solution", item1, im);
         Letter item2 = new Letter("Letter1", "A shiny letter");
 
-        hallwn.setItems(new ArrayList<>(){{add(item1);add(item2);add(item3);}});
-        im.moveItemToInventory(item1);
+        hallwn.setItems(new ArrayList<>(){{add(item2);add(item3);}});
 
     }
 
