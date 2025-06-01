@@ -13,8 +13,12 @@ public class List extends Command {
     @Override
     public void execute(String[] args) {
         if (args[0].isEmpty()) {
-            for (Item i : getGame().getPlayer().getInventory().getItems()) {
-                System.out.println(i.getName());
+            if (getGame().getPlayer().getInventory().getItems().isEmpty()) {
+                System.out.println("Your inventory is empty");
+            } else {
+                for (Item i : getGame().getPlayer().getInventory().getItems()) {
+                    System.out.println(i.getName());
+                }
             }
         } else {
             throw new InvalidCommandException();
