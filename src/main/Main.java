@@ -81,7 +81,6 @@ public class Main {
         game.run();
         System.out.println(StringStyling.StyleStringBright("Terminating...", Style.ITALIC, Color.BLACK));
 
-        //TODO : not let the player take the puzzles
         //TODO : maybe implement a way to ignore words like the or a in the input
         // TODO : see if we want to remove the puzzle when it's solved and the key when it's used
     }

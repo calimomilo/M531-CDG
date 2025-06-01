@@ -46,7 +46,7 @@ public class CommandRegistry {
         } catch (ItemNotInInventoryException e) {
             System.out.println("The \"" + e.getMessage() + "\" is not in your inventory.");
         } catch (ItemNotInLocationException e) {
-            System.out.println("The \"" + e.getMessage() + "\" isn't here.");
+            System.out.println("There is no \"" + e.getMessage() + "\" here.");
         }
 
     };
