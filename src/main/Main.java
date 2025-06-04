@@ -93,6 +93,7 @@ public class Main {
         System.out.println(StringStyling.StyleStringBright("Terminating...", Style.ITALIC, Color.BLACK));
 
         //TODO : maybe implement a way to ignore words like the or a in the input
-        // TODO : see if we want to remove the puzzle when it's solved and the key when it's used
+        //TODO : see if we want to remove the puzzle when it's solved and the key when it's used
+        //TODO : see if it's possible to not save new changes instead of completely rewriting the save file
     }
 }
