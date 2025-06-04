@@ -8,6 +8,8 @@ import utils.Style;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class Game {
     private WorldMap wm = new WorldMap();
@@ -18,7 +20,7 @@ public class Game {
     /**
      * Initialization of a new game, including the creation of all necessary elements
      */
-    public Game(){
+    public Game(boolean loadSave){
         System.out.println(StringStyling.StyleStringBright("Initializing game...", Style.ITALIC, Color.BLACK));
         Location kitch = new Location("Kitchen", "There is a table in the middle of the room, and a sink and fridge against the north wall.", false);
         Location livr = new Location("Living Room", "There are two beanbags around a carpet in the center of the room. A door leads west and the kitchen can be seen to the north.", false);
@@ -56,8 +58,16 @@ public class Game {
 
         cr.addObserver(new CommandHistoryLogger());
         cr.setHistoryFile("command_history.txt");
-        // Optionally, load previous history to restore state
-        cr.loadAndReplayCommands(this);
+        if (loadSave) {
+            cr.loadAndReplayCommands(this); // Load previous history
+        } else {
+            // Optionally clear the history file for a new game
+            try (FileWriter writer = new FileWriter("command_history.txt")) {
+                writer.write(""); // Clear file
+            } catch (Exception e) {
+                System.out.println("Could not clear save file: " + e.getMessage());
+            }
+        }
     }
 
     /**
