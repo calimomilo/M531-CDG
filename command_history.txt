@@ -1,3 +1,2 @@
-map
 move north
-map
+move north

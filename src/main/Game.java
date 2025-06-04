@@ -8,7 +8,9 @@ import utils.Style;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Game {
@@ -81,13 +83,24 @@ public class Game {
         do {
             userInput = getUserInput("\nWhat do you want to do?");
             if (userInput.equalsIgnoreCase("exit")) {
-                System.out.println("See ya later!");
                 System.out.println(StringStyling.StyleStringBright("Exiting game...", Style.ITALIC, Color.BLACK));
                 break;
             }
             cr.parseCommandInput(userInput);
-        } while (true); // Loop runs until "exit" is entered
-        // end of game
+        } while (true);
+        // Loop runs until "exit" is entered
+        String saveGameState = getUserInput(userInput + "\nDo you want to save the game state? (yes/no)");
+        if (!saveGameState.equalsIgnoreCase("yes") && !saveGameState.equalsIgnoreCase("y")) {
+            // We remove all the content of the history file
+            try (FileWriter writer = new FileWriter("command_history.txt")) {
+                writer.write(""); // Clear file
+            } catch (IOException e) {
+                System.out.println("Error clearing command history: " + e.getMessage());
+            }
+        } else{
+            System.out.println("Game state saved successfully.");
+            System.out.println("See ya later!");
+        }
     }
 
     /**
