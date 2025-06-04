@@ -54,6 +54,10 @@ public class Game {
 
         hallwn.setItems(new ArrayList<>(){{add(item2);add(item3);}});
 
+        cr.addObserver(new CommandHistoryLogger());
+        cr.setHistoryFile("command_history.txt");
+        // Optionally, load previous history to restore state
+        cr.loadAndReplayCommands(this);
     }
 
     /**

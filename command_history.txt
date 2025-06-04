@@ -1,0 +1,4 @@
+map
+move north
+map
+map

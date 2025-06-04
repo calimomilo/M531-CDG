@@ -4,12 +4,52 @@ package main.commandsRelated;
 import exceptions.InvalidCommandException;
 import exceptions.ItemNotInLocationException;
 import exceptions.UnknownCommandException;
+import main.Game;
 import exceptions.ItemNotInInventoryException;
 
 import java.util.*;
-
+import java.io.*;
 public class CommandRegistry {
     private TreeMap<String, Command> commands = new TreeMap<>();
+    private ArrayList<ICommandObserver> observers = new ArrayList<>();
+    private ArrayList<String> commandHistory = new ArrayList<>();
+    private String historyFile = "command_history.txt";
+    private boolean isReplayingHistory = false;
+
+    public void addObserver(ICommandObserver observer) {
+        observers.add(observer);
+    }
+
+    private void notifyObservers(String command) {
+        for (ICommandObserver observer : observers) {
+            observer.onCommandExecuted(command);
+        }
+    }
+
+    public void setHistoryFile(String filename) {
+        this.historyFile = filename;
+    }
+
+    public void saveCommand(String command) {
+        try (FileWriter fw = new FileWriter(historyFile, true)) {
+            fw.write(command + "\n");
+        } catch (IOException e) {
+            System.out.println("Error saving command: " + e.getMessage());
+        }
+    }
+
+    public void loadAndReplayCommands(Game game) {
+        isReplayingHistory = true;
+        try (BufferedReader br = new BufferedReader(new FileReader(historyFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                parseCommandInput(line);
+            }
+        } catch (IOException e) {
+            // System.out.println("No previous history found.");
+        }
+        isReplayingHistory = false;
+    }
 
     /**
      * Adds a command to the registry
@@ -36,6 +76,11 @@ public class CommandRegistry {
         try {
             if (this.commands.containsKey(verb)) {
                 this.commands.get(verb).execute(parts);
+                commandHistory.add(userInput);
+                if (!isReplayingHistory) {
+                    saveCommand(userInput); // Save to file only if not replaying
+                }
+                notifyObservers(userInput); // Notify observers
             } else {
                 throw new UnknownCommandException();
             }
@@ -48,7 +93,6 @@ public class CommandRegistry {
         } catch (ItemNotInLocationException e) {
             System.out.println("The \"" + e.getMessage() + "\" isn't here.");
         }
-
     };
 
     public TreeMap<String, Command> getCommands() {
