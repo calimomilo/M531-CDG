@@ -52,7 +52,7 @@ public class WorldMap {
      * @param y second coordinate (vertical)
      * @param arrayList 2D ArrayList in which to add the location
      */
-    private void addLocationToArrayList(Location location, int x, int y, ArrayList<ArrayList<Location>> arrayList) {
+    public void addLocationToArrayList(Location location, int x, int y, ArrayList<ArrayList<Location>> arrayList) {
         if (x >= arrayList.size()) { // si la coordonnée x est en dehors du tableau existant, rajoute le bon nombre de colonnes
             int add = x-arrayList.size();
             for (int i = 0; i <= add; i++) {

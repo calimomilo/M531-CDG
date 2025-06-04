@@ -23,12 +23,15 @@ public class Teleport extends Command {
             }
             String moveLocation = string.toString().trim();
             boolean notFound = true;
-            for (ArrayList<Location> column : getGame().getWorldMap().getDiscoveredLocations()) {
-                for (Location loc : column) {
-                    if (loc != null && loc.getName().equalsIgnoreCase(moveLocation)) {
-                        getGame().getWorldMap().setPlayerLocation(loc);
-                        System.out.println(StringStyling.StyleString(loc.getName(), Style.BOLD, Color.DEFAULT));
-                        notFound = false;
+            // first check needed to prevent the player to teleport to a placeholder location
+            if (!(moveLocation.equalsIgnoreCase("locked") || moveLocation.equalsIgnoreCase("unlocked"))) {
+                for (ArrayList<Location> column : getGame().getWorldMap().getDiscoveredLocations()) {
+                    for (Location loc : column) {
+                        if (loc != null && loc.getName().equalsIgnoreCase(moveLocation)) {
+                            getGame().getWorldMap().setPlayerLocation(loc);
+                            System.out.println(StringStyling.StyleString(loc.getName(), Style.BOLD, Color.DEFAULT));
+                            notFound = false;
+                        }
                     }
                 }
             }
