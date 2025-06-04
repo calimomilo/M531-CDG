@@ -21,6 +21,7 @@ public class Help extends Command {
                 System.out.println(entry.getKey() + ": " + entry.getValue().getDescription());
             }
             System.out.println("exit: Exits the game");
+            System.out.println("save (on exit): Saves the game before exiting");
         } else {
             throw new InvalidCommandException();
         }

@@ -17,6 +17,7 @@ import utils.StringStyling;
 import utils.Style;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
 
@@ -76,9 +77,19 @@ public class Main {
 
         System.out.println(StringStyling.StyleStringBright("Starting...", Style.ITALIC, Color.BLACK));
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you want to load the last save? (yes/no)");
+        System.out.print("> ");
+        String choice = sc.nextLine().trim().toLowerCase();
 
-        Game game = new Game();
+        Game game;
+        if (choice.equals("yes") || choice.equals("y")) {
+            game = new Game(true); // load save
+        } else {
+            game = new Game(false); // new game
+        }
         game.run();
+
         System.out.println(StringStyling.StyleStringBright("Terminating...", Style.ITALIC, Color.BLACK));
 
         //TODO : maybe implement a way to ignore words like the or a in the input
