@@ -8,6 +8,10 @@ import utils.Style;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Game {
     private WorldMap wm = new WorldMap();
@@ -18,7 +22,7 @@ public class Game {
     /**
      * Initialization of a new game, including the creation of all necessary elements
      */
-    public Game(){
+    public Game(boolean loadSave){
         System.out.println(StringStyling.StyleStringBright("Initializing game...", Style.ITALIC, Color.BLACK));
         Location kitch = new Location("Kitchen", "There is a table in the middle of the room, and a sink and fridge against the north wall.", false);
         Location livr = new Location("Living Room", "There are two beanbags around a carpet in the center of the room. A door leads west and the kitchen can be seen to the north.", false);
@@ -56,6 +60,18 @@ public class Game {
         hallwn.setItems(new ArrayList<>(){{add(letter1);add(puzzle1);}});
         bedr.setItems(new ArrayList<>(){{add(tc);}});
 
+        cr.addObserver(new CommandHistoryLogger());
+        cr.setHistoryFile("command_history.txt");
+        if (loadSave) {
+            cr.loadAndReplayCommands(this); // Load previous history
+        } else {
+            // Optionally clear the history file for a new game
+            try (FileWriter writer = new FileWriter("command_history.txt")) {
+                writer.write(""); // Clear file
+            } catch (Exception e) {
+                System.out.println("Could not clear save file: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -69,13 +85,24 @@ public class Game {
         do {
             userInput = getUserInput("\nWhat do you want to do?");
             if (userInput.equalsIgnoreCase("exit")) {
-                System.out.println("See ya later!");
                 System.out.println(StringStyling.StyleStringBright("Exiting game...", Style.ITALIC, Color.BLACK));
                 break;
             }
             cr.parseCommandInput(userInput);
-        } while (true); // Loop runs until "exit" is entered
-        // end of game
+        } while (true);
+        // Loop runs until "exit" is entered
+        String saveGameState = getUserInput(userInput + "\nDo you want to save the game state? (yes/no)");
+        if (!saveGameState.equalsIgnoreCase("yes") && !saveGameState.equalsIgnoreCase("y")) {
+            // We remove all the content of the history file
+            try (FileWriter writer = new FileWriter("command_history.txt")) {
+                writer.write(""); // Clear file
+            } catch (IOException e) {
+                System.out.println("Error clearing command history: " + e.getMessage());
+            }
+        } else{
+            System.out.println("Game state saved successfully.");
+            System.out.println("See ya later!");
+        }
     }
 
     /**
