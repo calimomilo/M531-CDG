@@ -4,6 +4,7 @@ import exceptions.InvalidCommandException;
 import exceptions.ItemNotInLocationException;
 import main.Game;
 import main.itemsRelated.Puzzle;
+import main.itemsRelated.TeleportCrystal;
 
 public class Take extends Command {
     public Take(String name, String description, Game game) {
@@ -23,7 +24,10 @@ public class Take extends Command {
             } else if (getGame().getWorldMap().getPlayerLocation().getItem(objectToTake) instanceof Puzzle) {
                 System.out.println("You can't take the " + objectToTake + ".");
             } else {
-                    getGame().getItemManager().moveItemToInventory(getGame().getWorldMap().getPlayerLocation().getItem(objectToTake));
+                if (getGame().getWorldMap().getPlayerLocation().getItem(objectToTake) instanceof TeleportCrystal) {
+                    Command teleport = new Teleport("teleport", "Allows the player to move to any location they have already visited", getGame());
+                }
+                getGame().getItemManager().moveItemToInventory(getGame().getWorldMap().getPlayerLocation().getItem(objectToTake));
             }
         } else {
             throw new InvalidCommandException();

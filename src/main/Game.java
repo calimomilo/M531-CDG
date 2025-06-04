@@ -48,11 +48,13 @@ public class Game {
         Command say = new Say("say", "Saying the correct words to solve a puzzle will drop a key", this);
         Command use = new Use("use", "Allows the player to use an item in their inventory", this);
 
-        Key item1 = new Key("Small Key", "A small key", bedr);
-        Puzzle item3 = new Puzzle("Puzzle", "A box with a seemingly voice activated lock on it", "the solution", item1, im);
-        Letter item2 = new Letter("Paper Slip", "A paper slip with the message \"The solution is the solution\" scrawled across it");
+        Key key1 = new Key("Small Key", "A small key", bedr);
+        Puzzle puzzle1 = new Puzzle("Puzzle", "A box with a seemingly voice activated lock on it", "the solution", key1, im);
+        Letter letter1 = new Letter("Paper Slip", "A paper slip with the message \"The solution is the solution\" scrawled across it");
+        TeleportCrystal tc = new TeleportCrystal("Teleport Crystal", "A crystal that's glowing softly. As soon as you touch it, you realize you are now able to teleport.");
 
-        hallwn.setItems(new ArrayList<>(){{add(item2);add(item3);}});
+        hallwn.setItems(new ArrayList<>(){{add(letter1);add(puzzle1);}});
+        bedr.setItems(new ArrayList<>(){{add(tc);}});
 
     }
 
