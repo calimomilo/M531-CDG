@@ -107,8 +107,8 @@ public class Game {
 
 
         Key libraryKey = new Key("Small Key", "A small key. It smells like fish", pantry);
-        Puzzle libraryPuzzle = new Puzzle("Puzzle", "A box with a seemingly voice activated lock on it", "the solution", libraryKey, im);
-        Letter libraryLetter = new Letter("Paper Slip", "A paper slip with the message \"The solution is the solution\" scrawled across it");
+        Puzzle libraryPuzzle = new Puzzle("Puzzle", "A box with a seemingly voice activated lock on it", "Sand", libraryKey, im);
+        Letter libraryLetter = new Letter("Paper Slip", "I build castles, yet tear down mountains, make some men blind, and others see. What am I?");
 
         Key diningKey = new Key("Dining room key", "A beautiful and simple key. It looks like an office key.", office);
         Puzzle diningPuzzle = new Puzzle("Puzzle", "xxx", "A gold coin", diningKey, im);
