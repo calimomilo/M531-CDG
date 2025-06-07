@@ -17,7 +17,7 @@ public class Puzzle extends Item {
 
     // à voir si vous voulez que la commande Say appelle cette méthode
     public boolean solve(String attempt) {
-        if (attempt.equals(solution)) {
+        if (attempt.equalsIgnoreCase(solution)) {
             isSolved = true;
             System.out.println("Congratulations, you solved this puzzle!");
             dropKey();

@@ -24,23 +24,61 @@ public class Game {
      */
     public Game(boolean loadSave){
         System.out.println(StringStyling.StyleStringBright("Initializing game...", Style.ITALIC, Color.BLACK));
-        Location kitch = new Location("Kitchen", "There is a table in the middle of the room, and a sink and fridge against the north wall.", false);
-        Location livr = new Location("Living Room", "There are two beanbags around a carpet in the center of the room. A door leads west and the kitchen can be seen to the north.", false);
-        Location bedr = new Location("Bedroom", "There is a bed in a corner and a closet near the door to the east.", true);
-        Location enthall = new Location("Entrance Hall", "A hallway stretches to the north.", false);
-        Location bathr = new Location("Bathroom", "There is a shower, a toilet, and a sink with a dirty mirror above it. Doors lead to the south and east.", false);
-        Location hallws = new Location("South Hallway", "The hallway stretches to the north, with a door to the west.", false);
-        Location hallwn = new Location("North Hallway", "The hallway stretches south, with doors to the east and west.", false);
+        Location office = new Location("Office", "Tall windows with heavy velvet drapes filter golden light onto a vast mahogany desk. Shelves of rare books and delicate instruments surround the room", true);
+        Location changingRoom = new Location("Changing room", "Tall mirrors, ornate coat racks, and a faint scent of powder and musk. Elegant cloaks and tailored suits hang in perfect order.\n" +
+                "One rack is oddly heavier—and behind it, a narrow, secret door leads to the basement.", true);
+        Location westBasement = new Location("West Basement", "Stone walls, cold air, iron gate at the far end. This is the way out—but it’s locked tight. And something down here doesn’t want you to leave.", true);
+        Location eastBasement = new Location("East Basement", "Stone walls, cold air, iron gate at the far end. This is the way out—but it’s locked tight. And something down here doesn’t want you to leave.", true);
 
-        wm.addLocation(kitch, 2, 3);
-        wm.addLocation(livr, 2, 2);
-        wm.addLocation(bedr, 0, 1);
-        wm.addLocation(enthall, 1, 0);
-        wm.addLocation(bathr, 0, 2);
-        wm.addLocation(hallws, 1, 1);
-        wm.addLocation(hallwn, 1, 2);
+        Location southLibrary = new Location("South Library", "Floor-to-ceiling shelves filled with leather-bound books. One is missing its place suspiciously clean.", false);
 
-        wm.setPlayerLocation(enthall);
+        Location northLibrary = new Location("North Library", "Floor-to-ceiling shelves filled with leather-bound books. One is missing its place suspiciously clean.", false);
+        Location Salon = new Location("Salon", "There are two beanbags around a carpet in the center of the room. A door leads west and the kitchen can be seen to the north.", false);
+        Location westEntrance = new Location("West entrance", "Twin staircases, heavy oak doors, and a sealed exit. You came in this way. You won’t leave by it.", false);
+        Location eastEntrance = new Location("East entrance", "Twin staircases, heavy oak doors, and a sealed exit. You came in this way. You won’t leave by it.", false);
+
+        Location southHallway = new Location("South hallway", "Grand chandelier above, creaking wood below. Locked doors line the corridor. You feel like you're being led… or herded.", false);
+
+        Location southMasterBedroom = new Location("South Master Bedroom", "Lavish canopy bed, gilded mirror, perfume lingering in the air. The fireplace is still warm… too warm.", false);
+        Location northHallway = new Location("North Hallway", "Grand chandelier above, creaking wood below. Locked doors line the corridor. You feel like you're being led… or herded.", false);
+
+        Location northMasterBedroom = new Location("North Master Bedroom", "Lavish canopy bed, gilded mirror, perfume lingering in the air. The fireplace is still warm… too warm.", false);
+        Location southDiningRoom = new Location("South Dining Room", "Long polished table set for twelve. The chandelier above sways gently with a letter rolled around a candle. You are the only guest.", false);
+        Location pantry = new Location("Pantry", "Rows of spices, preserved foods, and wine. A strange looking bottle of Champagne lays on the floor.", true);
+
+        Location guestBedroom = new Location("Guest Bedroom", "Faint smell of lavender. A journal lies open on the nightstand—last entry unfinished. The window is locked… from the outside.", false);
+        Location northDiningRoom = new Location("North Dining Room", "Long polished table set for twelve. The chandelier above sways gently with a letter rolled around a candle. You are the only guest.", false);
+        Location westKitchen = new Location("West Kitchen", "Copper pots, an extinguished hearth, butcher’s knives perfectly aligned. There are recent footprints in the ash.", false);
+        Location eastKitchen = new Location("East Kitchen", "Copper pots, an extinguished hearth, butcher’s knives perfectly aligned. There are recent footprints in the ash.", false);
+
+
+        wm.addLocation(office, 0, 0);
+        wm.addLocation(changingRoom, 1, 0);
+        wm.addLocation(westBasement, 2, 0);
+        wm.addLocation(eastBasement, 3, 0);
+
+        wm.addLocation(southLibrary, 0, 1);
+
+        wm.addLocation(northLibrary, 0, 2);
+        wm.addLocation(Salon, 1, 2);
+        wm.addLocation(westEntrance, 2, 2);
+        wm.addLocation(eastEntrance, 3, 2);
+
+        wm.addLocation(southHallway, 1, 3);
+
+        wm.addLocation(southMasterBedroom, 0, 4);
+        wm.addLocation(northHallway, 1, 4);
+
+        wm.addLocation(northMasterBedroom, 0, 5);
+        wm.addLocation(southDiningRoom, 1, 5);
+        wm.addLocation(pantry, 3, 5);
+
+        wm.addLocation(guestBedroom, 0, 6);
+        wm.addLocation(northDiningRoom, 1, 6);
+        wm.addLocation(westKitchen, 2, 6);
+        wm.addLocation(eastKitchen, 3, 6);
+
+        wm.setPlayerLocation(eastEntrance);
 
         Command move = new Move("move", "Allows the player to move on the map", this);
         Command look = new Look("look", "Displays the description of the location of the player", this);
@@ -52,13 +90,28 @@ public class Game {
         Command say = new Say("say", "Saying the correct words to solve a puzzle will drop a key", this);
         Command use = new Use("use", "Allows the player to use an item in their inventory", this);
 
-        Key key1 = new Key("Small Key", "A small key", bedr);
-        Puzzle puzzle1 = new Puzzle("Puzzle", "A box with a seemingly voice activated lock on it", "the solution", key1, im);
-        Letter letter1 = new Letter("Paper Slip", "A paper slip with the message \"The solution is the solution\" scrawled across it");
+
+        Key libraryKey = new Key("Small Key", "A small key. It smells like fish", pantry);
+        Puzzle libraryPuzzle = new Puzzle("Puzzle", "A box with a seemingly voice activated lock on it", "sand", libraryKey, im);
+        Letter libraryLetter = new Letter("Paper Slip", "I build castles, yet tear down mountains, make some men blind, and others see. What am I?");
+
         TeleportCrystal tc = new TeleportCrystal("Teleport Crystal", "A crystal that's glowing softly. As soon as you touch it, you realize you are now able to teleport.");
 
-        hallwn.setItems(new ArrayList<>(){{add(letter1);add(puzzle1);}});
-        bedr.setItems(new ArrayList<>(){{add(tc);}});
+
+        Key diningKey = new Key("Dining room key", "A beautiful and simple key. It looks like an office key.", office);
+        Puzzle diningPuzzle = new Puzzle("Puzzle", "xxx", "gold coin", diningKey, im);
+        Letter diningLetter = new Letter("Golden riddle", "It has a golden head. It has a golden tail. It has no body.");
+
+        Key pantryKey = new Key("Basement Key", "This key smells like freedom", eastBasement);
+        Puzzle pantryPuzzle = new Puzzle("Puzzle", "xxx", "fire", pantryKey, im);
+        Letter pantryLetter = new Letter("xxx", "What is not alive but grows, does not breaths but needs air.");
+
+
+        northLibrary.setItems(new ArrayList<>(){{add(libraryLetter);add(libraryPuzzle);}});
+        southDiningRoom.setItems(new ArrayList<>(){{add(diningLetter);add(diningPuzzle);}});
+        pantry.setItems(new ArrayList<>(){{add(pantryLetter);add(pantryPuzzle);}});
+
+        southMasterBedroom.setItems(new ArrayList<>(){{add(tc);}});
 
         cr.addObserver(new CommandHistoryLogger());
         cr.setHistoryFile("command_history.txt");
@@ -85,24 +138,13 @@ public class Game {
         do {
             userInput = getUserInput("\nWhat do you want to do?");
             if (userInput.equalsIgnoreCase("exit")) {
+                System.out.println("See ya later!");
                 System.out.println(StringStyling.StyleStringBright("Exiting game...", Style.ITALIC, Color.BLACK));
                 break;
             }
             cr.parseCommandInput(userInput);
-        } while (true);
-        // Loop runs until "exit" is entered
-        String saveGameState = getUserInput(userInput + "\nDo you want to save the game state? (yes/no)");
-        if (!saveGameState.equalsIgnoreCase("yes") && !saveGameState.equalsIgnoreCase("y")) {
-            // We remove all the content of the history file
-            try (FileWriter writer = new FileWriter("command_history.txt")) {
-                writer.write(""); // Clear file
-            } catch (IOException e) {
-                System.out.println("Error clearing command history: " + e.getMessage());
-            }
-        } else{
-            System.out.println("Game state saved successfully.");
-            System.out.println("See ya later!");
-        }
+        } while (true); // Loop runs until "exit" is entered
+        // end of game
     }
 
     /**
