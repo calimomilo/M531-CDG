@@ -31,6 +31,9 @@ public class Move extends Command {
             Location newLocation = getGame().getWorldMap().getLocation(x, y, getGame().getWorldMap().getAllLocations());
 
             if (newLocation != null) {
+                if (newLocation == getGame().getWorldMap().getLocation(3, 0, getGame().getWorldMap().getAllLocations())) {
+                    getGame().setGameWon(true);
+                }
                 if (newLocation.getIsLocked()) {
                     System.out.println("The door is locked. Maybe there is a key somewhere?");
                     // adds a placeholder location to display found locked locations on the map

@@ -18,12 +18,13 @@ public class Game {
     private CommandRegistry cr = new CommandRegistry();
     private Player player = new Player("John Doe");
     private ItemManager im = new ItemManager(this);
+    private boolean gameWon = false;
 
     /**
      * Initialization of a new game, including the creation of all necessary elements
      */
     public Game(boolean loadSave){
-        System.out.println(StringStyling.StyleStringBright("Initializing game...", Style.ITALIC, Color.BLACK));
+        System.out.println(StringStyling.StyleStringBright((loadSave? "Loading game..." : "Initializing game..."), Style.ITALIC, Color.BLACK));
         //Location office = new Location("Office", "Tall windows with heavy velvet drapes filter golden light onto a vast mahogany desk. Shelves of rare books and delicate instruments surround the room", true);
         //Location changingRoom = new Location("Changing room", "Tall mirrors, ornate coat racks, and a faint scent of powder and musk. Elegant cloaks and tailored suits hang in perfect order.\n" +
         //        "One rack is oddly heavier—and behind it, a narrow, secret door leads to the basement.", true);
@@ -50,29 +51,29 @@ public class Game {
         //Location westKitchen = new Location("West Kitchen", "Copper pots, an extinguished hearth, butcher’s knives perfectly aligned. There are recent footprints in the ash.", false);
         //Location eastKitchen = new Location("East Kitchen", "Copper pots, an extinguished hearth, butcher’s knives perfectly aligned. There are recent footprints in the ash.", false);
 
-        Location entranceHall = new Location("Entrance Hall", "Behind you, heavy oak doors, and a sealed exit. To the west, the house feels like it's pulling you in. You came in this way. You won’t leave by it.", false);
-        Location changingRoom = new Location("Changing Room", "Tall mirrors, ornate coat racks, and a faint scent of powder and musk. Elegant cloaks and tailored suits hang in perfect order. A large staircase can be seen to the west, and the front doors stand tauntingly to the east.", false);
-        Location staircase = new Location("Staircase", "The walls stretch up and disappear in the darkness above. To the west, a door stands ajar, and a steep staircase climbs to the north. To the east, you see the changing room.", false);
+        Location entranceHall = new Location("Entrance Hall", "Behind you, heavy oak doors, and a sealed exit. \nTo the west, the house feels like it's pulling you in. \nYou came in this way. \nYou won’t leave by it.", false);
+        Location changingRoom = new Location("Changing Room", "Tall mirrors, ornate coat racks, and a faint scent of powder and musk. \nElegant cloaks and tailored suits hang in perfect order. \nA large staircase can be seen to the west, and the front doors stand tauntingly to the east.", false);
+        Location staircase = new Location("Staircase", "The walls stretch up and disappear in the darkness above. \nTo the west, a door stands ajar, and a steep staircase climbs to the north. \nTo the east, you see the changing room.", false);
 
-        Location southHallway = new Location("South Hallway", "The polished wood floor creaks beneath your feet. The stairs go down to the south and there is a hallway opposite it, lined by portraits that seem to be watching you. You feel like you're being led… or herded.", false);
-        Location hallway = new Location("Hallway", "The hallway stretches from south to north. You can't remember how long you've been here, and you're not sure if the doors to either side of the hallway are real.", false);
-        Location northHallway = new Location("North Hallway", "You stand at the north end of the hallway. An unidentifiable smell makes you feel dizzy. You see doors to the west and north.", false);
+        Location southHallway = new Location("South Hallway", "The polished wood floor creaks beneath your feet. \nThe stairs go down to the south and there is a hallway opposite it, lined by portraits that seem to be watching you. \nYou feel like you're being led… or herded.", false);
+        Location hallway = new Location("Hallway", "The hallway stretches from south to north. \nYou can't remember how long you've been here, and you're not sure if the doors to either side of the hallway are real.", false);
+        Location northHallway = new Location("North Hallway", "You stand at the north end of the hallway. \nAn unidentifiable smell makes you feel dizzy. \nYou see doors to the west and north.", false);
 
-        Location masterBedroom = new Location("Master Bedroom", "Lavish canopy bed, gilded mirror, and the smell of perfume still lingering in the air. Doors lead east and north.", false);
-        Location bathroom = new Location("Bathroom", "There is a message written on the mirror above the sink, but you can't seem to decipher it. The sound of water dripping from the showerhead make your heart race. You need to leave.", false);
+        Location masterBedroom = new Location("Master Bedroom", "Lavish canopy bed, gilded mirror, and the smell of perfume still lingering in the air. \nDoors lead east and north.", false);
+        Location bathroom = new Location("Bathroom", "There is a message written on the mirror above the sink, but you can't seem to decipher it. \nThe sound of water dripping from the showerhead make your heart race. \nYou need to leave.", false);
 
-        Location westDiningRoom = new Location("West Dining Room", "There is an open door to the south. A long polished table is set for twelve. You are the only guest.", false);
-        Location eastDiningRoom = new Location("East Dining Room", "There is wine in the glass at the head of the table. On the ground, an hourglass has fallen and spilled its contents around. The door east leads to the kitchen.", false);
-        Location kitchen = new Location("Kitchen", "Copper pots, an extinguished hearth, and butcher’s knives perfectly aligned. There are doors to the west and south of the room.", false);
-        Location pantry = new Location("Pantry", "Rows of spices, preserved foods, and wine. A strange looking bottle of Champagne lies on the floor. To the north is the door to the kitchen.", true);
+        Location westDiningRoom = new Location("West Dining Room", "There is an open door to the south. \nA long polished table is set for twelve. \nYou are the only guest.", false);
+        Location eastDiningRoom = new Location("East Dining Room", "There is wine in the glass at the head of the table. On the ground,\n an hourglass has fallen and spilled sand everywhere. \nThe door east leads to the kitchen.", false);
+        Location kitchen = new Location("Kitchen", "Copper pots, an extinguished hearth, and butcher’s knives perfectly aligned. \nThere are doors to the west and south of the room.", false);
+        Location pantry = new Location("Pantry", "Rows of spices, preserved foods, and wine. \nA strange looking bottle of Champagne lies on the floor. \nTo the north is the door to the kitchen.", true);
 
-        Location sittingRoom = new Location("Sitting Room", "The smell of lavender is so thick you can almost taste it. The fireplace is still warm... too warm. There are doors to the south and east.", false);
-        Location office = new Location("Office", "Tall windows with heavy velvet drapes filter golden light onto a vast mahogany desk. On the south wall, shelves of rare books and delicate instruments surround a door.", true);
-        Location library = new Location("Library", "Floor-to-ceiling shelves are filled with leather-bound books. One is missing its place suspiciously clean. The shelf is oddly heavy—and behind it, a narrow, secret door leads east.", false);
+        Location sittingRoom = new Location("Sitting Room", "The smell of lavender is so thick you can almost taste it. \nThe fireplace is still warm... too warm. \nThere are doors to the south and east.", false);
+        Location office = new Location("Office", "\nTall windows with heavy velvet drapes filter golden light onto a vast mahogany desk. \nOn the south wall, shelves of rare books and delicate instruments surround a door.", true);
+        Location library = new Location("Library", "Floor-to-ceiling shelves are filled with leather-bound books. \nOne is missing its place suspiciously clean. \nThe shelf is oddly heavy—and behind it, a narrow, secret door leads east.", false);
 
         Location secretPassage = new Location("Secret Passage", "You can barely see through the darkness of the room, but you can feel a draft coming from the east.", false);
-        Location basement = new Location("Basement", "Stone walls, cold air, and an iron gate at the far end. This feels like the the way out, and something down here doesn’t want you to leave.", false);
-        Location outside = new Location("Outside", "The sun blinds you as soon as you step outside. The fresh air on your skin should feel like relief, but all you feel is like you've forgotten something important. It's too late now. You won't remember it.", true);
+        Location basement = new Location("Basement", "Stone walls, cold air, and an iron gate at the far end. \nThis feels like the the way out, and something down here doesn’t want you to leave.", false);
+        Location outside = new Location("Outside", "The sun blinds you as soon as you step outside. \nThe fresh air on your skin should feel like relief, but all you feel is that you've forgotten something important. \nIt's too late now. \nYou won't remember it.", true);
 
         wm.addLocation(entranceHall, 3, 2);
         wm.addLocation(changingRoom, 2, 2);
@@ -161,6 +162,11 @@ public class Game {
                 break;
             }
             cr.parseCommandInput(userInput);
+            if (gameWon) {
+                System.out.println("\nCongratulations, you have finished the game!\nWe hope to see you again soon!");
+                System.out.println(StringStyling.StyleStringBright("Exiting game...", Style.ITALIC, Color.BLACK));
+                break;
+            }
         } while (true); // Loop runs until "exit" is entered
         // end of game
     }
@@ -194,5 +200,9 @@ public class Game {
 
     public ItemManager getItemManager() {
         return im;
+    }
+
+    public void  setGameWon(boolean gameWon) {
+        this.gameWon = gameWon;
     }
 }

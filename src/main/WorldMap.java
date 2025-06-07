@@ -91,7 +91,7 @@ public class WorldMap {
      * @return the location found at the coordinates, or null if there isn't one
      */
     public Location getLocation(int x, int y, ArrayList<ArrayList<Location>> arrayList) {
-        if (x < arrayList.size() && y < arrayList.get(x).size() && x >= 0 && y >= 0) {
+        if (x < arrayList.size() && x >= 0 && y < arrayList.get(x).size() && y >= 0) {
             return arrayList.get(x).get(y);
         } else {
             //System.out.println("Error : out of bounds");
