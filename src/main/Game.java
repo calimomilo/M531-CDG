@@ -51,8 +51,6 @@ public class Game {
         Location westKitchen = new Location("West Kitchen", "Copper pots, an extinguished hearth, butcher’s knives perfectly aligned. There are recent footprints in the ash.", false);
         Location eastKitchen = new Location("East Kitchen", "Copper pots, an extinguished hearth, butcher’s knives perfectly aligned. There are recent footprints in the ash.", false);
 
-        Location wall = new Location("Wall", "It's just a wall, nothing here...", true);
-
 
         wm.addLocation(office, 0, 0);
         wm.addLocation(changingRoom, 1, 0);
@@ -60,42 +58,25 @@ public class Game {
         wm.addLocation(eastBasement, 3, 0);
 
         wm.addLocation(southLibrary, 0, 1);
-        wm.addLocation(wall, 1, 1);
-        wm.addLocation(wall, 2, 1);
-        wm.addLocation(wall, 3, 1);
 
         wm.addLocation(northLibrary, 0, 2);
         wm.addLocation(Salon, 1, 2);
         wm.addLocation(westEntrance, 2, 2);
         wm.addLocation(eastEntrance, 3, 2);
 
-        wm.addLocation(wall, 0, 3);
         wm.addLocation(southHallway, 1, 3);
-        wm.addLocation(wall, 2, 3);
-        wm.addLocation(wall, 3, 3);
 
         wm.addLocation(southMasterBedroom, 0, 4);
         wm.addLocation(northHallway, 1, 4);
-        wm.addLocation(wall, 2, 4);
-        wm.addLocation(wall, 3, 4);
 
         wm.addLocation(northMasterBedroom, 0, 5);
         wm.addLocation(southDiningRoom, 1, 5);
-        wm.addLocation(wall, 2, 5);
         wm.addLocation(pantry, 3, 5);
 
         wm.addLocation(guestBedroom, 0, 6);
         wm.addLocation(northDiningRoom, 1, 6);
         wm.addLocation(westKitchen, 2, 6);
         wm.addLocation(eastKitchen, 3, 6);
-
-        wm.addLocation(wall, 2, 0);
-        wm.addLocation(wall, 2, 1);
-        wm.addLocation(wall, 2, 2);
-        wm.addLocation(wall, 2, 3);
-        wm.addLocation(wall, 2, 4);
-        wm.addLocation(wall, 2, 5);
-        wm.addLocation(wall, 2, 6);
 
         wm.setPlayerLocation(eastEntrance);
 
@@ -111,26 +92,25 @@ public class Game {
 
 
         Key libraryKey = new Key("Small Key", "A small key. It smells like fish", pantry);
-        Puzzle libraryPuzzle = new Puzzle("Puzzle", "A box with a seemingly voice activated lock on it", "Sand", libraryKey, im);
+        Puzzle libraryPuzzle = new Puzzle("Puzzle", "A box with a seemingly voice activated lock on it", "sand", libraryKey, im);
         Letter libraryLetter = new Letter("Paper Slip", "I build castles, yet tear down mountains, make some men blind, and others see. What am I?");
 
         TeleportCrystal tc = new TeleportCrystal("Teleport Crystal", "A crystal that's glowing softly. As soon as you touch it, you realize you are now able to teleport.");
 
 
         Key diningKey = new Key("Dining room key", "A beautiful and simple key. It looks like an office key.", office);
-        Puzzle diningPuzzle = new Puzzle("Puzzle", "xxx", "A gold coin", diningKey, im);
+        Puzzle diningPuzzle = new Puzzle("Puzzle", "xxx", "gold coin", diningKey, im);
         Letter diningLetter = new Letter("Golden riddle", "It has a golden head. It has a golden tail. It has no body.");
 
         Key pantryKey = new Key("Basement Key", "This key smells like freedom", eastBasement);
-        Puzzle pantryPuzzle = new Puzzle("Puzzle", "xxx", "Fire", pantryKey, im);
+        Puzzle pantryPuzzle = new Puzzle("Puzzle", "xxx", "fire", pantryKey, im);
         Letter pantryLetter = new Letter("xxx", "What is not alive but grows, does not breaths but needs air.");
 
 
-        northLibrary.setItems(new ArrayList<>(){{add(libraryLetter);add(libraryKey);add(libraryPuzzle);}});
-        southDiningRoom.setItems(new ArrayList<>(){{add(diningLetter);add(diningKey);add(diningPuzzle);}});
-        pantry.setItems(new ArrayList<>(){{add(pantryLetter);add(pantryKey);}{add(pantryPuzzle);}});
+        northLibrary.setItems(new ArrayList<>(){{add(libraryLetter);add(libraryPuzzle);}});
+        southDiningRoom.setItems(new ArrayList<>(){{add(diningLetter);add(diningPuzzle);}});
+        pantry.setItems(new ArrayList<>(){{add(pantryLetter);add(pantryPuzzle);}});
 
-        southLibrary.setItems(new ArrayList<>(){{add(libraryLetter);add(libraryPuzzle);}});
         southMasterBedroom.setItems(new ArrayList<>(){{add(tc);}});
 
         cr.addObserver(new CommandHistoryLogger());

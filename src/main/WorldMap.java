@@ -22,9 +22,9 @@ public class WorldMap {
      */
     public void addLocation(Location location, int x, int y) {
         if (containsLocation(location, allLocations)) {
-            System.out.println("Error: Location already added"); // message d'erreur si la zone est déjà dans la carte
+            System.out.println("Error: Location " + location.getName() + " already added"); // message d'erreur si la zone est déjà dans la carte
         } else if (getLocation(x, y, allLocations) != null) {
-            System.out.println("Error: Location already at these coordinates"); // message d'erreur s'il y a déjà une zone aux coordonnées indiquées
+            System.out.println("Error: Location " + location.getName() + " already at these coordinates"); // message d'erreur s'il y a déjà une zone aux coordonnées indiquées
         } else {
             addLocationToArrayList(location, x, y, allLocations);
         }
@@ -110,7 +110,7 @@ public class WorldMap {
                 return new int[] {allLocations.indexOf(column), column.indexOf(location)};
             }
         }
-        System.out.println("Error : location not found");
+        System.out.println("Error : location " + location.getName() + " not found");
         return null;
     }
 
