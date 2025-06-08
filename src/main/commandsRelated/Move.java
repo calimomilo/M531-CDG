@@ -34,7 +34,7 @@ public class Move extends Command {
             Location newLocation = getGame().getWorldMap().getLocation(x, y, getGame().getWorldMap().getAllLocations());
 
             if (newLocation != null) {
-                if (newLocation.getName().equals("Outside")) {
+                if (newLocation.getName().equals("Outside") && !newLocation.getIsLocked()) {
                     getGame().setGameWon(true);
                 }
                 if (newLocation.getIsLocked()) {
