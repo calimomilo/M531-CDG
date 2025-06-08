@@ -25,5 +25,4 @@ public class Help extends Command {
             throw new InvalidCommandException();
         }
     }
-    //TODO : add a command to display the help for a specific command
 }

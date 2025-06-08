@@ -13,7 +13,10 @@ public class Use extends Command {
     public Use(String name, String description, Game game) {
         super(name, description, game);
     }
-
+    /**
+     * Executes the use command, which attempts to use the given item
+     * @param args the additional arguments in the input, should be the name of a key in the player's inventory for the command to work
+     */
     @Override
     public void execute(String[] args) {
         if (args[0].isEmpty()) {

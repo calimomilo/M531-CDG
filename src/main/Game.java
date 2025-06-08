@@ -25,31 +25,6 @@ public class Game {
      */
     public Game(boolean loadSave){
         System.out.println(StringStyling.StyleStringBright((loadSave? "Loading game..." : "Initializing game..."), Style.ITALIC, Color.BLACK));
-        //Location office = new Location("Office", "Tall windows with heavy velvet drapes filter golden light onto a vast mahogany desk. Shelves of rare books and delicate instruments surround the room", true);
-        //Location changingRoom = new Location("Changing room", "Tall mirrors, ornate coat racks, and a faint scent of powder and musk. Elegant cloaks and tailored suits hang in perfect order.\n" +
-        //        "One rack is oddly heavier—and behind it, a narrow, secret door leads to the basement.", true);
-        //Location westBasement = new Location("West Basement", "Stone walls, cold air, iron gate at the far end. This is the way out—but it’s locked tight. And something down here doesn’t want you to leave.", true);
-        //Location eastBasement = new Location("East Basement", "Stone walls, cold air, iron gate at the far end. This is the way out—but it’s locked tight. And something down here doesn’t want you to leave.", true);
-
-        //Location southLibrary = new Location("South Library", "Floor-to-ceiling shelves filled with leather-bound books. One is missing its place suspiciously clean.", false);
-
-        //Location northLibrary = new Location("North Library", "Floor-to-ceiling shelves filled with leather-bound books. One is missing its place suspiciously clean.", false);
-        //Location Salon = new Location("Salon", "There are two beanbags around a carpet in the center of the room. A door leads west and the kitchen can be seen to the north.", false);
-        //Location westEntrance = new Location("West entrance", "Twin staircases, heavy oak doors, and a sealed exit. You came in this way. You won’t leave by it.", false);
-        //Location eastEntrance = new Location("East entrance", "Twin staircases, heavy oak doors, and a sealed exit. You came in this way. You won’t leave by it.", false);
-
-        //Location southHallway = new Location("South hallway", "Grand chandelier above, creaking wood below. Locked doors line the corridor. You feel like you're being led… or herded.", false);
-
-        //Location southMasterBedroom = new Location("South Master Bedroom", "Lavish canopy bed, gilded mirror, perfume lingering in the air. The fireplace is still warm… too warm.", false);
-        //Location northHallway = new Location("North Hallway", "Grand chandelier above, creaking wood below. Locked doors line the corridor. You feel like you're being led… or herded.", false);
-
-        //Location northMasterBedroom = new Location("North Master Bedroom", "Lavish canopy bed, gilded mirror, perfume lingering in the air. The fireplace is still warm… too warm.", false);
-        //Location southDiningRoom = new Location("South Dining Room", "Long polished table set for twelve. The chandelier above sways gently with a letter rolled around a candle. You are the only guest.", false);
-        //Location pantry = new Location("Pantry", "Rows of spices, preserved foods, and wine. A strange looking bottle of Champagne lies on the floor.", true);
-
-        //Location guestBedroom = new Location("Guest Bedroom", "Faint smell of lavender. A journal lies open on the nightstand—last entry unfinished. The window is locked… from the outside.", false);
-        //Location westKitchen = new Location("West Kitchen", "Copper pots, an extinguished hearth, butcher’s knives perfectly aligned. There are recent footprints in the ash.", false);
-        //Location eastKitchen = new Location("East Kitchen", "Copper pots, an extinguished hearth, butcher’s knives perfectly aligned. There are recent footprints in the ash.", false);
 
         Location entranceHall = new Location("Entrance Hall", "Behind you, heavy oak doors, and a sealed exit. \nTo the west, the house feels like it's pulling you in. \nYou came in this way. \nYou won’t leave by it.", false);
         Location changingRoom = new Location("Changing Room", "Tall mirrors, ornate coat racks, and a faint scent of powder and musk. \nElegant cloaks and tailored suits hang in perfect order. \nA large staircase can be seen to the west, and the front doors stand tauntingly to the east.", false);
@@ -101,15 +76,15 @@ public class Game {
 
         wm.setPlayerLocation(entranceHall);
 
-        Command move = new Move("move", "Allows the player to move on the map", this);
-        Command look = new Look("look", "Displays the description of the location of the player", this);
-        Command help = new Help("help", "Displays all commands", this);
-        Command map = new Map("map", "Displays the map of the locations discovered by the player", this);
-        Command inspect = new Inspect("inspect", "Displays information about an object in the inventory", this);
-        Command list = new List("list", "Displays all items from your inventory", this);
-        Command take = new Take("take", "Allows the player to take an item from the location and place it in their inventory", this);
-        Command say = new Say("say", "Saying the correct words to solve a puzzle will drop a key", this);
-        Command use = new Use("use", "Allows the player to use an item in their inventory", this);
+        new Move("move", "Allows the player to move on the map", this);
+        new Look("look", "Displays the description of the location of the player", this);
+        new Help("help", "Displays all commands", this);
+        new Map("map", "Displays the map of the locations discovered by the player", this);
+        new Inspect("inspect", "Displays information about an object in the inventory", this);
+        new List("list", "Displays all items from your inventory", this);
+        new Take("take", "Allows the player to take an item from the location and place it in their inventory", this);
+        new Say("say", "Saying the correct words to solve a puzzle will drop a key", this);
+        new Use("use", "Allows the player to use an item in their inventory", this);
 
 
         Key libraryKey = new Key("Small Key", "A small key. It smells like fish.", pantry);
@@ -197,22 +172,42 @@ public class Game {
         return userInput;
     }
 
+    /**
+     * returns the instance of WorldMap used in the game
+     * @return the instance of WorldMap used in the game
+     */
     public WorldMap getWorldMap() {
         return wm;
     }
 
+    /**
+     * returns the instance of CommandRegistry used in the game
+     * @return the instance of CommandRegistry used in the game
+     */
     public CommandRegistry getCommandRegistry() {
         return cr;
     }
 
+    /**
+     * returns the instance of Player used in the game
+     * @return the instance of Player used in the game
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * returns the instance of ItemManager used in the game
+     * @return the instance of ItemManager used in the game
+     */
     public ItemManager getItemManager() {
         return im;
     }
 
+    /**
+     * Defines the win status of the game, only used when the player finishes the game
+     * @param gameWon the new win status of the game
+     */
     public void  setGameWon(boolean gameWon) {
         this.gameWon = gameWon;
     }

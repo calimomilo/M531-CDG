@@ -16,20 +16,36 @@ public class CommandRegistry {
     private String historyFile = "command_history.txt";
     private boolean isReplayingHistory = false;
 
+    /**
+     * Adds an observer to the command registry
+     * @param observer the observer to add
+     */
     public void addObserver(ICommandObserver observer) {
         observers.add(observer);
     }
 
+    /**
+     * notifies the observers of the inputted command
+     * @param command the inputted command
+     */
     private void notifyObservers(String command) {
         for (ICommandObserver observer : observers) {
             observer.onCommandExecuted(command);
         }
     }
 
+    /**
+     * sets the name of the command history file
+     * @param filename the name of the command history file
+     */
     public void setHistoryFile(String filename) {
         this.historyFile = filename;
     }
 
+    /**
+     * writes the inputted command in the command history file
+     * @param command the inputted command
+     */
     public void saveCommand(String command) {
         try (FileWriter fw = new FileWriter(historyFile, true)) {
             fw.write(command + "\n");
@@ -38,6 +54,10 @@ public class CommandRegistry {
         }
     }
 
+    /**
+     * replays all the commands saved to the command history file
+     * @param game the game the command registry is part of
+     */
     public void loadAndReplayCommands(Game game) {
         isReplayingHistory = true;
         try (BufferedReader br = new BufferedReader(new FileReader(historyFile))) {
@@ -95,6 +115,10 @@ public class CommandRegistry {
         }
     };
 
+    /**
+     * returns the TreeMap of the commands
+     * @return the TreeMap of the commands
+     */
     public TreeMap<String, Command> getCommands() {
         return commands;
     }

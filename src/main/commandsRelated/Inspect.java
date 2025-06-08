@@ -12,7 +12,10 @@ public class Inspect extends Command {
     public Inspect(String name, String description, Game game) {
         super(name, description, game);
     }
-
+    /**
+     * Executes the inspect command, which displays the description of the specified item
+     * @param args the additional arguments in the input, should be the name of an item in the inventory for the command to work
+     */
     @Override
     public void execute(String[] args) {
         if (!args[0].isEmpty()) {

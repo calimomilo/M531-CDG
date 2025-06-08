@@ -1,6 +1,11 @@
 package main.commandsRelated;
 
 public class CommandHistoryLogger implements ICommandObserver {
+
+    /**
+     * Prints a message confirming the log of the inputted command (Currently disabled)
+     * @param command the inputted command
+     */
     @Override
     public void onCommandExecuted(String command) {
 

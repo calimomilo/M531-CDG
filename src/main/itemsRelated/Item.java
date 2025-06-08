@@ -9,10 +9,18 @@ public abstract class Item {
         this.description = description;
     }
 
+    /**
+     * returns the name of the item
+     * @return the name of the item
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * returns the description of the item
+     * @return the description of the item
+     */
     public String getDescription() {
         return this.description;
     }

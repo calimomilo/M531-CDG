@@ -15,7 +15,10 @@ public class Teleport extends Command {
     public Teleport(String name, String description, Game game) {
         super(name, description, game);
     }
-
+    /**
+     * Executes the teleport command, which teleports the player to an already discovered location
+     * @param args the additional arguments in the input, should be the name of a discovered location for the command to work
+     */
     public void execute(String[] args) {
         if (!args[0].isEmpty()) {
             StringBuilder string = new StringBuilder();

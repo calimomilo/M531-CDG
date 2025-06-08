@@ -10,19 +10,21 @@ public class Player {
         this.name = name;
     }
 
+    /**
+     * returns the name of the player
+     *
+     * @return the name of the player
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * returns the player's inventory object
+     *
+     * @return the player's inventory object
+     */
     public Inventory getInventory() {
         return inventory;
-    }
-
-    @Override
-    public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", inventory=" + inventory +
-                '}';
     }
 }

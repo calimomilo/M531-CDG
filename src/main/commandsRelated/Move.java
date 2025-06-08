@@ -12,7 +12,10 @@ public class Move extends Command {
     public Move(String name, String description, Game game) {
         super(name, description, game);
     }
-
+    /**
+     * Executes the move command, which moves the player on the map
+     * @param args the additional arguments in the input, should be a cardinal direction for the command to work
+     */
     @Override
     public void execute(String[] args) {
         if (args.length == 1) {

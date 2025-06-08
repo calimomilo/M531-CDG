@@ -23,14 +23,26 @@ public class Location implements IPrintable{
         this.isLocked = isLocked;
     }
 
+    /**
+     * returns the name of the location
+     * @return the name of the location
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * returns the description of the location
+     * @return the description of the location
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * returns the items ArrayList in the location
+     * @return the items ArrayList in the location
+     */
     public ArrayList<Item> getItems() {
         return items;
     }
@@ -43,6 +55,11 @@ public class Location implements IPrintable{
         this.items = items;
     }
 
+    /**
+     * returns the item object with the specified name
+     * @param name the name of the object to retrieve
+     * @return the item object
+     */
     public Item getItem(String name) {
         for (Item item : items) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -60,6 +77,10 @@ public class Location implements IPrintable{
         items.remove(item);
     }
 
+    /**
+     * Returns the locked status of the location
+     * @return the locked status of the location
+     */
     public boolean getIsLocked() {
         return isLocked;
     }

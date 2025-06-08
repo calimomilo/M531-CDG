@@ -4,7 +4,6 @@ import main.Location;
 import main.WorldMap;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Utility class to print a 2D array in a grid formatted way.
@@ -128,6 +127,10 @@ public class Array2Dprinter {
         }
         return maxLength;
     }
+
+    /**
+     * ... Never gonna give you up :)
+     */
     public static void easterEgg() {
         System.out.println(
                 "..................................::::..........::.----:...........----~~-....-~-:.............:~---::::\n" +

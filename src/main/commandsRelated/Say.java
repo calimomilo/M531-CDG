@@ -9,7 +9,10 @@ public class Say extends Command {
     public Say(String name, String description, Game game) {
         super(name, description, game);
     }
-
+    /**
+     * Executes the say command, which tries to solve the puzzle in the player's location with the specified answer
+     * @param args the additional arguments in the input, i.e. the attempted answer of the player
+     */
     @Override
     public void execute(String[] args) {
         if (args[0].isEmpty()) {

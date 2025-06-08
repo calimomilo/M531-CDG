@@ -10,7 +10,10 @@ public class Take extends Command {
     public Take(String name, String description, Game game) {
         super(name, description, game);
     }
-
+    /**
+     * Executes the take command, which moves the specified item to the player's inventory
+     * @param args the additional arguments in the input, should be the name of an item in the location for the command to work
+     */
     @Override
     public void execute(String[] args) {
         if (!args[0].isEmpty()) {

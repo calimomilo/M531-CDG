@@ -114,14 +114,26 @@ public class WorldMap {
         return null;
     }
 
+    /**
+     * returns the player's location
+     * @return the player's location
+     */
     public Location getPlayerLocation() {
         return playerLocation;
     }
 
+    /**
+     * returns the coordinates of the player
+     * @return the coordinates of the player
+     */
     public int[] getPlayerLocationCoords() {
         return getLocationCoords(playerLocation);
     }
 
+    /**
+     * changes the location of the player and adds said location to the ArrayList of discovered locations
+     * @param playerLocation the player's new location
+     */
     public void setPlayerLocation(Location playerLocation) {
         this.playerLocation = playerLocation;
         addDiscoveredLocation(playerLocation);

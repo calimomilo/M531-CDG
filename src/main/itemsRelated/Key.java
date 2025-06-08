@@ -11,10 +11,17 @@ public class Key extends Item{
         this.locationLinked = locationLinked;
     }
 
+    /**
+     * returns the location the key opens
+     * @return the location the key opens
+     */
     public Location getLocationLinked() {
         return locationLinked;
     }
 
+    /**
+     * unlocks the location linked to the key
+     */
     public void unlockLocation(){
         this.locationLinked.setIsLocked(false);
     }

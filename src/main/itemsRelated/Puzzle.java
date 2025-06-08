@@ -15,7 +15,11 @@ public class Puzzle extends Item {
     }
 
 
-    // à voir si vous voulez que la commande Say appelle cette méthode
+    /**
+     * Checks if the specified string is the solution of the puzzle
+     * @param attempt the string attempted by the player
+     * @return true if the attempt is correct, false otherwise
+     */
     public boolean solve(String attempt) {
         if (attempt.equalsIgnoreCase(solution)) {
             isSolved = true;
@@ -26,13 +30,25 @@ public class Puzzle extends Item {
         return false;
     }
 
+    /**
+     * returns the solved status of the puzzle
+     * @return the solved status of the puzzle
+     */
     public Boolean getIsSolved() {
         return isSolved;
     }
+
+    /**
+     * defines the new solved status of the puzzle
+     * @param isSolved the new solved status of the puzzle
+     */
     public void setIsSolved(Boolean isSolved) {
         this.isSolved = isSolved;
     }
 
+    /**
+     * adds the key linked to the puzzle to the player's inventory
+     */
     private void dropKey() { // mettre la clé dans l'inventaire du joueur
         if (key != null){
             itemManager.moveItemToInventory(key);

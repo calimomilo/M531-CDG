@@ -10,6 +10,10 @@ public class ItemManager {
         this.game = game;
     }
 
+    /**
+     * moves the specified item to the player's inventory
+     * @param item the item to move to the inventory
+     */
     public void moveItemToInventory(Item item) {
         game.getWorldMap().getPlayerLocation().getItems().remove(item);
         game.getPlayer().getInventory().addItem(item);
