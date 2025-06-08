@@ -154,7 +154,7 @@ public class Game {
         getCommandRegistry().getCommands().get("look").execute(new String[]{""});
 
         String userInput;
-        do {
+        while (!gameWon) {
             userInput = getUserInput("\nWhat do you want to do?");
             if (userInput.equalsIgnoreCase("exit")) {
                 System.out.println("See ya later!");
@@ -162,13 +162,25 @@ public class Game {
                 break;
             }
             cr.parseCommandInput(userInput);
-            if (gameWon) {
-                System.out.println("\nCongratulations, you have finished the game!\nWe hope to see you again soon!");
-                System.out.println(StringStyling.StyleStringBright("Exiting game...", Style.ITALIC, Color.BLACK));
-                break;
+        } // Loop runs until "exit" is entered
+
+        if (gameWon) {
+            System.out.println("\nCongratulations, you have finished the game!\nWe hope to see you again soon!");
+            System.out.println(StringStyling.StyleStringBright("Exiting game...", Style.ITALIC, Color.BLACK));
+        }
+
+        String saveGameState = getUserInput("\nDo you want to save the game state? (yes/no)");
+        if (!saveGameState.equalsIgnoreCase("yes") && !saveGameState.equalsIgnoreCase("y")) {
+            // We remove all the content of the history file
+            try (FileWriter writer = new FileWriter("command_history.txt")) {
+                writer.write(""); // Clear file
+            } catch (IOException e) {
+                System.out.println("Error clearing command history: " + e.getMessage());
             }
-        } while (true); // Loop runs until "exit" is entered
-        // end of game
+        } else{
+            System.out.println("Game state saved successfully.");
+            System.out.println("See ya later!");
+        }
     }
 
     /**
