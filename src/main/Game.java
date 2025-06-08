@@ -18,13 +18,16 @@ public class Game {
     private CommandRegistry cr = new CommandRegistry();
     private Player player = new Player("John Doe");
     private ItemManager im = new ItemManager(this);
+    private boolean newGame;
     private boolean gameWon = false;
 
     /**
      * Initialization of a new game, including the creation of all necessary elements
      */
-    public Game(boolean loadSave){
+    public Game(boolean loadSave) {
         System.out.println(StringStyling.StyleStringBright((loadSave? "Loading game..." : "Initializing game..."), Style.ITALIC, Color.BLACK));
+
+        this.newGame = !loadSave;
 
         Location entranceHall = new Location("Entrance Hall", "Behind you, heavy oak doors, and a sealed exit. \nTo the west, the house feels like it's pulling you in. \nYou came in this way. \nYou won’t leave by it.", false);
         Location changingRoom = new Location("Changing Room", "Tall mirrors, ornate coat racks, and a faint scent of powder and musk. \nElegant cloaks and tailored suits hang in perfect order. \nA large staircase can be seen to the west, and the front doors stand tauntingly to the east.", false);
@@ -110,6 +113,7 @@ public class Game {
         cr.addObserver(new CommandHistoryLogger());
         cr.setHistoryFile("command_history.txt");
         if (loadSave) {
+            getCommandRegistry().getCommands().get("look").execute(new String[]{""});
             cr.loadAndReplayCommands(this); // Load previous history
         } else {
             // Optionally clear the history file for a new game
@@ -126,7 +130,10 @@ public class Game {
      */
     public void run() {
         System.out.println(StringStyling.StyleStringBright("Running game...\n", Style.ITALIC, Color.BLACK));
-        getCommandRegistry().getCommands().get("look").execute(new String[]{""});
+
+        if (newGame) {
+            getCommandRegistry().getCommands().get("look").execute(new String[]{""});
+        }
 
         String userInput;
         while (!gameWon) {
