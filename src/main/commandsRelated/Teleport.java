@@ -4,6 +4,7 @@ import exceptions.InvalidCommandException;
 import exceptions.ItemNotInInventoryException;
 import main.Game;
 import main.Location;
+import utils.Array2Dprinter;
 import utils.Color;
 import utils.StringStyling;
 import utils.Style;
@@ -34,6 +35,8 @@ public class Teleport extends Command {
                         }
                     }
                 }
+            } else {
+                Array2Dprinter.easterEgg();
             }
             if (notFound) {
                 System.out.println("You can't teleport there.");

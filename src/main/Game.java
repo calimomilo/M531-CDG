@@ -179,7 +179,6 @@ public class Game {
             }
         } else{
             System.out.println("Game state saved successfully.");
-            System.out.println("See ya later!");
         }
     }
 

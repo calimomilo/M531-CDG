@@ -1,0 +1,11 @@
+move west
+move west
+move west
+move south
+move east
+move north
+move north
+move west
+take crystal pendant
+map
+teleport locked
